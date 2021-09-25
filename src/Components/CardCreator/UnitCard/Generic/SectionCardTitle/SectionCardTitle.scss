@@ -1,0 +1,64 @@
+.cardTitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	.team-name {
+		input {
+			padding: 0;
+			background: none;
+			border-left: none;
+			border-top: none;
+			border-right: none;
+		}
+		.tankTeamName {
+			input {
+				padding: 0;
+				font-size: 1em;
+				text-align: center;
+				text-transform: uppercase;
+				font-weight: bold;
+				&.text-black {
+					color: black;
+				}
+				&.text-white {
+					color: white;
+				}
+			}
+		}
+		.tankTeamClassification {
+			display: flex;
+			flex-direction: column-reverse;
+			&.text-black {
+				color: black;
+			}
+			&.text-white {
+				color: white;
+			}
+			input {
+				padding: 0;
+				font-size: 0.45em;
+				text-align: center;
+				text-transform: uppercase;
+				&.text-black {
+					color: black;
+				}
+				&.text-white {
+					color: white;
+				}
+			}
+		}
+	}
+	.cardTitleIcon {
+		padding: 0.25em;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.theme-icon {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			background: white;
+			border: 2px solid #eaeaea;
+		}
+	}
+}

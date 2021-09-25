@@ -1,0 +1,11 @@
+.form{
+	display: flex;
+	flex-direction: Column;
+	.inputField{
+		label{
+			margin-right: 1em;
+		}
+		input {
+		}
+	}
+}
