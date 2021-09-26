@@ -1,12 +1,13 @@
 import React from 'react'
 import '../../../scss/Colors.scss';
+import '../../../scss/Themes.scss';
 import './Card.scss';
 // import './Card.css'
 
 const Card = (props) => {
 	const classesCardInner = `card-inner ${props.currentTheme.cardInner}`;
-	const classesCard = `card ${props.currentTheme.bgColor}`
-	
+	const classesCard = `card theme ${props.currentTheme.bgTheme}`
+
 	return <div className='card-container'>
 		<div className={ classesCard }>
 			<div className={ classesCardInner }>{ props.children }</div>

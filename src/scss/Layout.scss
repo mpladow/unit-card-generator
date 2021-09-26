@@ -1,0 +1,27 @@
+.row {
+	display: flex;
+	flex-direction: row;
+}
+.column-6{
+	width: 60%;
+}
+.column-4 {
+	width: 40%;
+}
+.column-3 {
+	width: 33%;
+}
+.column-2 {
+	width: 20%;
+}
+.row-2 {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+.justify-space-between{
+	justify-content: space-between;
+}
+.row-5 {
+	height: 50%;
+}

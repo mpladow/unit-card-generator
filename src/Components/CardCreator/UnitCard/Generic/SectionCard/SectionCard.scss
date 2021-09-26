@@ -1,8 +1,8 @@
-.movementCard {
+.sectionCard {
 	padding: 0.1em;
 	border-radius: 7px;
 	height: 100%;
-	margin-top: 0.2em;
+	margin-top: 0.3em;
 	padding-top: 0;
 	input {
 		background: none;
@@ -13,7 +13,7 @@
 		width: 100%;
 	}
 
-	.movement-label {
+	.stat-label {
 		display: flex;
 		justify-content: center;
 		label {
@@ -34,24 +34,13 @@
 			color: white;
 		}
 	}
-	.movement-secondary {
+	.stat-secondary {
 		background-color: white;
 	}
-	.movementCard-inner {
+	.sectionCard-inner {
 		border-radius: 5px;
 		padding: 2px;
 		background-color: white;
-		.movement-value {
-			border-radius: 6px;
-			display:flex;
-			input {
-				background: none;
-				border-top: none;
-				border-left: none;
-				border-right: none;
-				text-align: center;
-				width: 100%;
-			}
-		}
+
 	}
 }

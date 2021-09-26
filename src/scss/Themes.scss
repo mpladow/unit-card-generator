@@ -1,0 +1,25 @@
+.theme {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	&.theme-us {
+		background-image: url('../images/backgrounds/BG-US.jfif');
+	}
+	&.theme-soviet {
+		background-image: url('../images/backgrounds/BG-Soviet.jfif');
+	}
+	&.theme-german {
+		background-image: url('../images/backgrounds/BG-German.jpg');
+	}
+	// &.theme-icon {
+	// }
+	&.icon-german {
+		background-image: url('../images/theme-icon/icon-German.png');
+	}
+	&.icon-us {
+		background-image: url('../images/theme-icon/icon-US.png');
+	}
+	&.icon-soviet {
+		background-image: url('../images/theme-icon/icon-Soviet.png');
+	}
+}
