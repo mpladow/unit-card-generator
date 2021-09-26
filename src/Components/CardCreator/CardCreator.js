@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './CardCreator.scss';
 import CardConfig from './ConfigForm/CardConfig';
 import UnitCardBack from './UnitCard/Back/UnitCardBack';
 import UnitCardFront from './UnitCard/Front/UnitCardFront';
@@ -78,6 +79,12 @@ const CardCreator = (props) => {
 			"roadDash": '10"/30cm',
 			"cross": "3+"
 		},
+		armour: {
+			"front": '7',
+			"side & rear": 4,
+			"top": 1
+		},
+		save: '3+',
 		weapons: []
 	})
 
@@ -89,8 +96,8 @@ const CardCreator = (props) => {
 	}
 
 	return (
-		<div className="App">
-			<header className="App-header">
+		<div className='card-creator'>
+			<div className="card-interface">
 
 				<UnitCardFront
 					onTeamNameChange={ teamNameChangeHandler }
@@ -102,8 +109,10 @@ const CardCreator = (props) => {
 					onTeamClassChange={ teamClassChangeHandler }
 					currentTheme={ cardTheme }
 					currentCard={ cardDetails }></UnitCardBack>
+			</div>
+			<div className="card-form">
 				<CardConfig onCardBgColorChange={ updateCardBgColor }></CardConfig>
-			</header>
+			</div>
 		</div>
 	);
 }
