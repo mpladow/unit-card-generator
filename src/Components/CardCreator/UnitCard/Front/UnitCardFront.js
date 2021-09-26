@@ -5,6 +5,7 @@ import SectionCard from '../Generic/SectionCard/SectionCard'
 
 import CardTitle from '../Generic/SectionCardTitle/CardTitle'
 import SectionMovement from './SectionMovement/SectionMovement';
+import Armour from './SectionArmour/Armour';
 
 
 
@@ -25,7 +26,7 @@ const UnitCardFront = (props) => {
 
 			<div className='row-5'>
 				<div className='row justify-space-between'>
-					<div className='column-2'>
+					<div className='column-25'>
 						<SectionCard
 							currentTheme={ props.currentCard.theme }
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Motivation") }></SectionCard>
@@ -36,11 +37,11 @@ const UnitCardFront = (props) => {
 					<div className='column-6'>
 
 					</div>
-					<div className='column-2'>
+					<div className='column-25'>
 						<SectionCard
 							currentTheme={ props.currentCard.theme }
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Is Hit On") }></SectionCard>
-
+						<Armour currentTheme={ props.currentCard.theme }></Armour>
 					</div>
 				</div>
 			</div>

@@ -1,9 +1,33 @@
-.form{
+.flex {
 	display: flex;
-	flex-direction: Column;
-	.inputField{
-		label{
+	flex-direction: column;
+	align-items: flex-start;
+	.inputField {
+		margin: 1em 0;
+		display: flex;
+		.label {
+			padding: 0.25em;
+		}
+		.label-secondary {
+			padding: 0.25em;
+			padding-left: .4em;
+			font-size: 0.8em;
+		}
+		.input {
+			padding: 0.25em;
+		}
+		.select {
+			padding: 0.25em;
+		}
+		&.horizontal {
+			flex-direction: row;
+		}
+		&.vertical {
+			flex-direction: column;
+		}
+		label {
 			margin-right: 1em;
+			margin: 0.25em 0;
 		}
 		input {
 		}

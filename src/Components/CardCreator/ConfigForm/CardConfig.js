@@ -1,5 +1,6 @@
 import react from 'react';
 import './CardConfig.scss';
+import ConfigSelect from './ConfigSelect';
 
 const CardConfig = (props) => {
 
@@ -62,43 +63,67 @@ const CardConfig = (props) => {
 	const unitTypeChangeHandler = (event) => {
 		let selected = UNIT_TYPES.find(x => x.name === event.target.value)
 	}
+	const motivationSecondaryChangeHandler = (value) => {
+		let selected = MOTIVATION_SECONDARY.find(x => x.id === parseInt(value))
+		console.log("secondary motivation selected", selected)
+	}
 
 	return <div>
-		<div className='form'>
-			<div className='inputField'>
-				<label>Card Background Color</label>
-				<select value={currentCard.theme.id} onChange={ bgColourChangeHandler }>
-					{ THEMES.map(x => <option value={ x.id }>{ x.name }</option>) }
-				</select>
+		<div className='flex'>
+			<div className='inputField horizontal'>
+				<div className='label'><label>Card Background Color</label></div>
+				<div className='select'>
+					<select value={ currentCard.theme.id } onChange={ bgColourChangeHandler }>
+						{ THEMES.map(x => <option value={ x.id }>{ x.name }</option>) }
+					</select>
+				</div>
 			</div>
-			<div className='inputField'>
-				<label>Unit Type</label>
-				<select value={currentCard.unitType.id} onChange={ unitTypeChangeHandler }>
-					{UNIT_TYPES.map(x => <option value={x.id}>{x.name}</option>)}
-				</select>
+			<div className='inputField horizontal'>
+				<div className='label'><label>Unit Type</label></div>
+				<div className='select'>
+					<select value={ currentCard.unitType.id } onChange={ unitTypeChangeHandler }>
+						{ UNIT_TYPES.map(x => <option value={ x.id }>{ x.name }</option>) }
+					</select>
+				</div>
 			</div>
-			<label>Motivation</label>
-			<div className='inputField'>
-				<select value={ currentCard.stats.find(x => x.labelPrimary === "Motivation").statDetail.id } onChange={ motivationChangeHandler }>
-					<option value=''>Select a motivation value</option>
-					{ MOTIVATION.map((m => <option value={ m.id }>{ m.name }</option>)) }
-				</select>
+			<div className='flex inputField vertical'>
+				<div className='label'><label>Motivation</label></div>
+				<div className='select'>
+					<select value={ currentCard.stats.find(x => x.labelPrimary === "Motivation").statDetail.id } onChange={ motivationChangeHandler }>
+						<option value=''>Select a motivation value</option>
+						{ MOTIVATION.map((m => <option value={ m.id }>{ m.name }</option>)) }
+					</select>
+				</div>
+				<div className='label-secondary'><label>Secondary</label></div>
+				<div className='select'>
+					<ConfigSelect onSelectChange={ motivationSecondaryChangeHandler } options={ MOTIVATION_SECONDARY }></ConfigSelect>
+				</div>
 			</div>
-			<label>Skill</label>
-			<div className='inputField'>
-				<select value={ currentCard.stats.find(x => x.labelPrimary === "Skill").statDetail.id } onChange={ skillChangeHandler }>
-					<option>Select a skill value</option>
-					{ SKILL.map((m => <option value={ m.id }>{ m.name }</option>)) }
-				</select>
+			<div className='flex inputField vertical'>
+				<div className='label'><label>Skill</label></div>
+				<div className='select'>
+					<select value={ currentCard.stats.find(x => x.labelPrimary === "Skill").statDetail.id } onChange={ skillChangeHandler }>
+						<option>Select a skill value</option>
+						{ SKILL.map((m => <option value={ m.id }>{ m.name }</option>)) }
+					</select>
+				</div>
+				<div className='label-secondary'><label>Secondary</label></div>
+				<div className='select'>
+					<ConfigSelect defaultValue={MOTIVATION_SECONDARY[0].id} onSelectChange={ motivationSecondaryChangeHandler } options={ MOTIVATION_SECONDARY }></ConfigSelect>
+				</div>
 			</div>
-			<label>Is Hit On</label>
-			<div className='inputField'>
-				<select value={ currentCard.stats.find(x => x.labelPrimary === "Is Hit On").statDetail.id } onChange={ hitOnChangeHandler }>
-					<option>Select a skill value</option>
-					{ HITON.map((m => <option value={ m.id }>{ m.name }</option>)) }
-				</select>
+			<div className='flex inputField vertical'>
+				<div className='label'><label>Is Hit On</label></div>
+				<div className='select'>
+					<select value={ currentCard.stats.find(x => x.labelPrimary === "Is Hit On").statDetail.id } onChange={ hitOnChangeHandler }>
+						<option>Select a skill value</option>
+						{ HITON.map((m => <option value={ m.id }>{ m.name }</option>)) }
+					</select>
+				</div>
+				<div className='label-secondary'><label>Secondary</label></div>
+				<ConfigSelect onSelectChange={ motivationSecondaryChangeHandler} options={MOTIVATION_SECONDARY}></ConfigSelect>
 			</div>
 		</div>
-	</div>
+	</div >
 }
 export default CardConfig;
