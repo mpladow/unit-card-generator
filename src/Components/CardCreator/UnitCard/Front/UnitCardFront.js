@@ -13,13 +13,13 @@ const UnitCardFront = (props) => {
 
 
 	return <div>
-		<Card currentTheme={ props.currentTheme }>
+		<Card currentTheme={ props.currentCard.theme }>
 			<CardTitle
 				onTeamNameChange={ props.onTeamNameChange }
 				onTeamClassChange={ props.onTeamClassChange }
 				teamName={ props.currentCard.teamName }
 				teamClass={ props.currentCard.teamClass }
-				currentTheme={ props.currentTheme }>
+				currentTheme={ props.currentCard.theme }>
 
 			</CardTitle>
 
@@ -27,25 +27,25 @@ const UnitCardFront = (props) => {
 				<div className='row justify-space-between'>
 					<div className='column-2'>
 						<SectionCard
-							currentTheme={ props.currentTheme }
+							currentTheme={ props.currentCard.theme }
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Motivation") }></SectionCard>
 						<SectionCard
-							currentTheme={ props.currentTheme }
+							currentTheme={ props.currentCard.theme }
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Skill") }></SectionCard>
 					</div>
 					<div className='column-6'>
 
 					</div>
 					<div className='column-2'>
-						<SectionCard 
-						currentTheme={ props.currentTheme } 
-						stat={ props.currentCard.stats.find(x => x.labelPrimary === "Hit On") }></SectionCard>
+						<SectionCard
+							currentTheme={ props.currentCard.theme }
+							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Is Hit On") }></SectionCard>
 
 					</div>
 				</div>
 			</div>
 			<div className='row-5'>
-				<SectionMovement currentTheme={ props.currentTheme } movementStat={ props.currentCard.movementStats }></SectionMovement>
+				<SectionMovement currentTheme={ props.currentCard.theme } movementStat={ props.currentCard.movementStats }></SectionMovement>
 			</div>
 
 		</Card>

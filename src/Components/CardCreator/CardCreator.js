@@ -8,10 +8,12 @@ import UnitCardFront from './UnitCard/Front/UnitCardFront';
 
 const CardCreator = (props) => {
 
+	// TEMP
+	// DATABASE
 	const THEMES = [
-		{ name: 'US', bgTheme: 'theme-us', icon: 'icon-us', bgColor: 'bg-navy-blue', textColor: 'text-white', sectionColorMain: 'bg-navy-blue', cardInner: 'bg-brown-1' },
-		{ name: 'German', bgTheme: 'theme-german', icon: 'icon-german', bgColor: 'bg-dark-grey', textColor: 'text-white', sectionColorMain: 'bg-dark-grey', cardInner: 'bg-brown-1' },
-		{ name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' }
+		{ id: 1, name: 'US', bgTheme: 'theme-us', icon: 'icon-us', bgColor: 'bg-navy-blue', textColor: 'text-white', sectionColorMain: 'bg-navy-blue', cardInner: 'bg-brown-1' },
+		{ id: 2, name: 'German', bgTheme: 'theme-german', icon: 'icon-german', bgColor: 'bg-dark-grey', textColor: 'text-white', sectionColorMain: 'bg-dark-grey', cardInner: 'bg-brown-1' },
+		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' }
 	]
 
 	const MOTIVATION = [{ id: 1, name: "Reluctant 5+", value: "Reluctant 5+" },
@@ -37,26 +39,28 @@ const CardCreator = (props) => {
 		{ id: 2, name: "Aggressive 3+", value: "Aggressive 3+" },
 		{ id: 3, name: "Reckless 2+", value: "Reckless 2+" },
 	]
-	const [cardTheme, setCardTheme] = useState(THEMES[0]);
+	// END TEMP
 
-	const updateCardBgColor = (name) => {
-		// find the theme colour, set this colour as the theme
-		let selectedTheme = THEMES.find(c => c.name === name);
-		setCardTheme(selectedTheme);
-	}
+	const [cardTheme, setCardTheme] = useState(THEMES[0]);
+	const [cardMotivation, setMotivation] = useState({})
+	const [cardSkill, setSkill] = useState({});
+	const [cardHitOn, setHitOn] = useState({});
+
 	let [cardDetails, setCardDetails] = useState({
+		theme: cardTheme,
 		teamName: 'm4 sherman',
 		teamClass: 'veteran tank company hq',
+		unitType: {},
 		stats: [
 			{
 				labelPrimary: "Motivation",
-				statDetail: MOTIVATION.find(x => x.id === 2),
+				statDetail: cardMotivation,
 				linkedValue: []
 			},
 
 			{
 				labelPrimary: "Skill",
-				statDetail: SKILL.find(x => x.id === 2),
+				statDetail: cardSkill,
 				linkedValue: []
 				// linkedValue: [
 				// 	{
@@ -67,8 +71,8 @@ const CardCreator = (props) => {
 				// ]
 			},
 			{
-				labelPrimary: "Hit On",
-				statDetail: HITON.find(x => x.id === 1),
+				labelPrimary: "Is Hit On",
+				statDetail: cardHitOn,
 				linkedValue: []
 			}
 		],
@@ -94,6 +98,20 @@ const CardCreator = (props) => {
 	const teamClassChangeHandler = (value) => {
 		setCardDetails({ ...cardDetails, teamClass: value });
 	}
+	const updateCardBgColorHandler = (value) => {
+		// find the theme colour, set this colour as the theme
+		setCardDetails({ ...cardDetails, theme: value })
+	}
+
+	const updateStatHandler = (result) => {
+		let newStats = cardDetails.stats.map(stat => {
+			if (stat.labelPrimary === result.statName) {
+				return { ...stat, statDetail: result.selected };
+			}
+			return stat;
+		})
+		setCardDetails({ ...cardDetails, stats: newStats })
+	}
 
 	return (
 		<div className='card-creator'>
@@ -103,15 +121,22 @@ const CardCreator = (props) => {
 					onTeamNameChange={ teamNameChangeHandler }
 					onTeamClassChange={ teamClassChangeHandler }
 					currentCard={ cardDetails }
-					currentTheme={ cardTheme }></UnitCardFront>
+				></UnitCardFront>
 				<UnitCardBack
 					onTeamNameChange={ teamNameChangeHandler }
 					onTeamClassChange={ teamClassChangeHandler }
-					currentTheme={ cardTheme }
-					currentCard={ cardDetails }></UnitCardBack>
+					currentCard={ cardDetails }>
+
+				</UnitCardBack>
 			</div>
 			<div className="card-form">
-				<CardConfig onCardBgColorChange={ updateCardBgColor }></CardConfig>
+				<CardConfig
+					onCardBgColorChange={ updateCardBgColorHandler }
+					onMotivationChange={ updateStatHandler }
+					onSkillChange={ updateStatHandler }
+					onHitOnChange={ updateStatHandler}
+					currentCard = {cardDetails}
+				></CardConfig>
 			</div>
 		</div>
 	);

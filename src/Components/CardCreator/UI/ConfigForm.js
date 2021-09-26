@@ -3,7 +3,6 @@ import react from 'react';
 const ConfigForm = (props) => {
 
 	const darkModeChange = (event) => {
-		console.log("CHANGED");
 		props.darkModeChange(event.target.checked);
 	}
 	return <div>

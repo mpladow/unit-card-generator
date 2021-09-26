@@ -19,11 +19,11 @@ const SectionCard = (props) => {
 
 	return <div>
 		<div className={ classesCard }>
-			<div className="stat-label"><label>{ props.stat.labelPrimary }</label></div>
+			<div className="stat-label"><label>{ stat.labelPrimary }</label></div>
 			<div className="sectionCard-inner">
 
 				<div className="stat-main">
-					<input value={ stat.statDetail.value }></input>
+					<div> { stat.statDetail.value }</div>
 				</div>
 				{/* { linkedStats } */}
 			</div>

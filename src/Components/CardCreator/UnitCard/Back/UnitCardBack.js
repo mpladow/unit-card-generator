@@ -16,14 +16,14 @@ const UnitCardBack = (props) => {
 
 
 	return <div>
-		<Card currentTheme={ props.currentTheme }>
+		<Card currentTheme={ props.currentCard.theme }>
 
 			<CardTitle
 				onTeamNameChange={ props.onTeamNameChange }
 				onTeamClassChange={ props.onTeamClassChange }
 				teamName={ props.currentCard.teamName }
 				teamClass={ props.currentCard.teamClass }
-				currentTheme={ props.currentTheme }>
+				currentTheme={ props.currentCard.theme }>
 
 			</CardTitle>
 
