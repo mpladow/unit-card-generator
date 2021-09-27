@@ -6,7 +6,8 @@ import './Armour.scss'
 
 const Armour = (props) => {
 
-	let stat = props.stat;
+	let armour = props.armour;
+
 	const classesCardInner = `armourCard-inner ${props.currentTheme.cardInner}`;
 	const classesCard = `armourCard ${props.currentTheme.bgColor}`;
 	const classesArmourMainPart = `part ${props.currentTheme.bgColor}`
@@ -26,23 +27,23 @@ const Armour = (props) => {
 				<div className="armour-main">
 					<div className={ classesArmourMainPart }>
 						<div>Front</div>
-						<div>I</div>
+						<div></div>
 					</div>
-					<div className='value'>6</div>
+					<div className='value'>{ props.armour.front }</div>
 				</div>
 				<div className="armour-main">
 					<div className={ classesArmourMainPart }>
 						<div>Side & Rear</div>
-						<div>I</div>
+						<div></div>
 					</div>
-					<div className='value'>4</div>
+					<div className='value'>{ props.armour.side }</div>
 				</div>
 				<div className="armour-main">
 					<div className={ classesArmourMainPart }>
-						<div>Front</div>
-						<div>I</div>
+						<div>Top</div>
+						<div></div>
 					</div>
-					<div className='value'>1</div>
+					<div className='value'>{ props.armour.top }</div>
 				</div>
 				{/* { linkedStats } */ }
 			</div>

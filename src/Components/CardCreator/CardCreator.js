@@ -76,19 +76,20 @@ const CardCreator = (props) => {
 				linkedValue: []
 			}
 		],
-		movementStat: {
+		vehicleMovement: {
 			"tactical": '10"/25cm',
-			"terrainDash": '10"/30cm',
+			"terrain": '10"/30cm',
 			"crossCountry": '10"/45cm',
-			"roadDash": '10"/30cm',
+			"road": '10"/30cm',
 			"cross": "3+"
 		},
 		armour: {
-			"front": '7',
-			"side & rear": 4,
-			"top": 1
+			"front": '',
+			"side": '',
+			"top": ''
 		},
-		save: '3+',
+
+		save: null,
 		weapons: []
 	})
 
@@ -112,6 +113,29 @@ const CardCreator = (props) => {
 		})
 		setCardDetails({ ...cardDetails, stats: newStats })
 	}
+	const updateArmourHandler = (result) => {
+		setCardDetails({
+			...cardDetails,
+			armour: {
+				"front": result.armourFront,
+				"side": result.armourSide,
+				"top": result.armourTop
+			}
+		})
+	}
+	const setVehicleMovement = (result) => {
+		setCardDetails({
+			...cardDetails,
+			vehicleMovement: {
+				"tactical": result.tactical,
+				"terrain": result.terrain,
+				"crossCountry": result.crossCountry,
+				"road": result.road,
+				"cross": result.cross
+			}
+		})
+	}
+
 
 	return (
 		<div className='card-creator'>
@@ -134,8 +158,10 @@ const CardCreator = (props) => {
 					onCardBgColorChange={ updateCardBgColorHandler }
 					onMotivationChange={ updateStatHandler }
 					onSkillChange={ updateStatHandler }
-					onHitOnChange={ updateStatHandler}
-					currentCard = {cardDetails}
+					onHitOnChange={ updateStatHandler }
+					onArmourChange={ updateArmourHandler }
+					onVehicleMovementChange={ setVehicleMovement }
+					currentCard={ cardDetails }
 				></CardConfig>
 			</div>
 		</div>

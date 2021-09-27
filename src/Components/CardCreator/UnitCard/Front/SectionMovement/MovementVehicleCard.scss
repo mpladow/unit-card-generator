@@ -1,4 +1,4 @@
-.movementCard {
+.movementVehicleCard {
 	padding: 0.1em;
 	border-radius: 7px;
 	height: 100%;
@@ -34,24 +34,18 @@
 			color: white;
 		}
 	}
-	.movement-secondary {
-		background-color: white;
+	.movement-value-first{
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
 	}
-	.movementCard-inner {
-		border-radius: 5px;
-		padding: 2px;
+	.movement-value-last{
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
+	.movement-value {
 		background-color: white;
-		.movement-value {
-			border-radius: 6px;
-			display:flex;
-			input {
-				background: none;
-				border-top: none;
-				border-left: none;
-				border-right: none;
-				text-align: center;
-				width: 100%;
-			}
-		}
+		color: black;
+		font-size: 14px;
+		border-left: 1.5px solid #000;
 	}
 }
