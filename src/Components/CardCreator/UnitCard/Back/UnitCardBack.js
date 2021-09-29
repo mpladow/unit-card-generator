@@ -14,7 +14,7 @@ import CardTitle from '../Generic/SectionCardTitle/CardTitle';
 const UnitCardBack = (props) => {
 
 
-
+let x = 0;
 	return <div>
 		<Card currentTheme={ props.currentCard.theme }>
 

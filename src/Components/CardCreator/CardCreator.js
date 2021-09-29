@@ -56,8 +56,8 @@ const CardCreator = (props) => {
 			{
 				labelPrimary: "Motivation",
 				statDetail: cardMotivation,
-				linkedValue:[]
-					// cardSecondaryMotivation
+				linkedValue: []
+				// cardSecondaryMotivation
 			},
 
 			{
@@ -140,45 +140,54 @@ const CardCreator = (props) => {
 		})
 	}
 	const updateMotivationSecondary = (result) => {
+
 		// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
 		// newSecondaryMotivation = result;
 
-		let secondaryStat = cardSecondaryMotivation.find(x => x.id == parseInt(result.id));
-
-		let filteredStats = [...cardSecondaryMotivation];
-		if (secondaryStat != null) {
-
-			// if the name is null, then remove this value
-			if (result.name == '') {
-				
-				filteredStats.filter(x => {
-					return x.id !== parseInt(result.id);
-				})
+		setCardDetails((prevState) => {
+			let temp = {
+				...prevState,
+				stats: [...prevState.stats]
 			}
-			// else update this value
-			else {
-				filteredStats.forEach(stat => {
-					if (stat.id == parseInt(result.id)) {
-						stat.name = result.name;
-						stat.value = result.value;
-					}
-					return stat;
-				})
-			}
-			// else delete this item
-		} else {
-			filteredStats.push(result);
-			// add this item to the array
-		}
-		setSecondaryMotivation(...cardSecondaryMotivation, filteredStats);
+			// change the values we need
 
-		let newStats = cardDetails.stats.map(stat => {
-			if (stat.labelPrimary == "Motivation") {
-				return { ...stat, linkedValue: cardSecondaryMotivation };
+			let secondaryStat = cardSecondaryMotivation.find(x => x.id == parseInt(result.id));
+			let linkedStats = cardDetails.stats.find(x => x.labelPrimary == "Motivation").linkedValue
+			let filteredStats = [...linkedStats];
+			if (secondaryStat != null) {
+
+				// 	// if the name is null, then remove this value
+				if (result.name == '') {
+
+					filteredStats.filter(x => {
+						return x.id !== parseInt(result.id);
+					})
+				}
+				// else update this value
+				else {
+					filteredStats.forEach(stat => {
+						if (stat.id == parseInt(result.id)) {
+							stat.name = result.name;
+							stat.value = result.value;
+						}
+						return stat;
+					})
+				}
+				// else delete this item
+			} else {
+				filteredStats.push(result);
+				// add this item to the array
 			}
-			return stat;
-		})
-		setCardDetails({ ...cardDetails, stats: newStats })
+
+			// let newStats = cardDetails.stats.map(stat => {
+			// 	if (stat.labelPrimary == "Motivation") {
+			// 		return { ...stat, linkedValue: cardSecondaryMotivation };
+			// 	}
+			// 	return stat;
+			// })
+			temp.stats.find(x => x.labelPrimary == "Motivation").linkedValue = filteredStats;
+			return temp;
+		});
 	}
 	// const updateMotivationSecondary = (result) => {
 	// 	// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
@@ -221,27 +230,27 @@ const CardCreator = (props) => {
 			<div className="card-interface">
 
 				<UnitCardFront
-					onTeamNameChange={ teamNameChangeHandler }
-					onTeamClassChange={ teamClassChangeHandler }
-					currentCard={ cardDetails }
+					onTeamNameChange={teamNameChangeHandler}
+					onTeamClassChange={teamClassChangeHandler}
+					currentCard={cardDetails}
 				></UnitCardFront>
 				<UnitCardBack
-					onTeamNameChange={ teamNameChangeHandler }
-					onTeamClassChange={ teamClassChangeHandler }
-					currentCard={ cardDetails }>
+					onTeamNameChange={teamNameChangeHandler}
+					onTeamClassChange={teamClassChangeHandler}
+					currentCard={cardDetails}>
 
 				</UnitCardBack>
 			</div>
 			<div className="card-form">
 				<CardConfig
-					onCardBgColorChange={ updateCardBgColorHandler }
-					onMotivationChange={ updateStatHandler }
-					onSkillChange={ updateStatHandler }
-					onHitOnChange={ updateStatHandler }
-					onArmourChange={ updateArmourHandler }
-					onVehicleMovementChange={ setVehicleMovement }
-					onMotivationSecondaryChange={ updateMotivationSecondary }
-					currentCard={ cardDetails }
+					onCardBgColorChange={updateCardBgColorHandler}
+					onMotivationChange={updateStatHandler}
+					onSkillChange={updateStatHandler}
+					onHitOnChange={updateStatHandler}
+					onArmourChange={updateArmourHandler}
+					onVehicleMovementChange={setVehicleMovement}
+					onMotivationSecondaryChange={updateMotivationSecondary}
+					currentCard={cardDetails}
 				></CardConfig>
 			</div>
 		</div>
