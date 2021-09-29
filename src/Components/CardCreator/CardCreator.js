@@ -45,6 +45,7 @@ const CardCreator = (props) => {
 	const [cardMotivation, setMotivation] = useState({})
 	const [cardSkill, setSkill] = useState({});
 	const [cardHitOn, setHitOn] = useState({});
+	const [cardSecondaryMotivation, setSecondaryMotivation] = useState([]);
 
 	let [cardDetails, setCardDetails] = useState({
 		theme: cardTheme,
@@ -55,13 +56,16 @@ const CardCreator = (props) => {
 			{
 				labelPrimary: "Motivation",
 				statDetail: cardMotivation,
-				linkedValue: []
+				linkedValue:[]
+					// cardSecondaryMotivation
 			},
 
 			{
 				labelPrimary: "Skill",
 				statDetail: cardSkill,
-				linkedValue: []
+				linkedValue: [
+					// { name: 'Tactics', value: "5+" }
+				]
 				// linkedValue: [
 				// 	{
 				// 		labelPrimary: "Text in italics"
@@ -135,6 +139,81 @@ const CardCreator = (props) => {
 			}
 		})
 	}
+	const updateMotivationSecondary = (result) => {
+		// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
+		// newSecondaryMotivation = result;
+
+		let secondaryStat = cardSecondaryMotivation.find(x => x.id == parseInt(result.id));
+
+		let filteredStats = [...cardSecondaryMotivation];
+		if (secondaryStat != null) {
+
+			// if the name is null, then remove this value
+			if (result.name == '') {
+				
+				filteredStats.filter(x => {
+					return x.id !== parseInt(result.id);
+				})
+			}
+			// else update this value
+			else {
+				filteredStats.forEach(stat => {
+					if (stat.id == parseInt(result.id)) {
+						stat.name = result.name;
+						stat.value = result.value;
+					}
+					return stat;
+				})
+			}
+			// else delete this item
+		} else {
+			filteredStats.push(result);
+			// add this item to the array
+		}
+		setSecondaryMotivation(...cardSecondaryMotivation, filteredStats);
+
+		let newStats = cardDetails.stats.map(stat => {
+			if (stat.labelPrimary == "Motivation") {
+				return { ...stat, linkedValue: cardSecondaryMotivation };
+			}
+			return stat;
+		})
+		setCardDetails({ ...cardDetails, stats: newStats })
+	}
+	// const updateMotivationSecondary = (result) => {
+	// 	// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
+	// 	// newSecondaryMotivation = result;
+	// 	let motivationStat = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
+	// 	let secondaryStat = motivationStat.find(x => x.id === result.id);
+
+	// 	let filteredStats = [];
+	// 	if (secondaryStat != null) {
+
+	// 		// if the name is null, then remove this value
+	// 		if (result.name === '') {
+	// 			filteredStats = motivationStat.filter(x => {
+	// 				return x.id !== result.id;
+	// 			})
+	// 		}
+	// 		// else update this value
+	// 		else {
+	// 			filteredStats = motivationStat.map(stat => {
+	// 				if (stat.id === result.id) {
+	// 					return { ...stat, linkedValue: result }
+	// 				}
+	// 				return stat;
+	// 			})
+	// 		}
+	// 		// else delete this item
+	// 	} else {
+	// 		filteredStats.push(result);
+	// 		// add this item to the array
+	// 	}
+
+	// 	// remove 
+	// 	// update the linkedValue array.
+
+	// }
 
 
 	return (
@@ -161,6 +240,7 @@ const CardCreator = (props) => {
 					onHitOnChange={ updateStatHandler }
 					onArmourChange={ updateArmourHandler }
 					onVehicleMovementChange={ setVehicleMovement }
+					onMotivationSecondaryChange={ updateMotivationSecondary }
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>

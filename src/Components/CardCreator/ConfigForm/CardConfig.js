@@ -64,8 +64,9 @@ const CardConfig = (props) => {
 		let selected = UNIT_TYPES.find(x => x.name === event.target.value)
 	}
 	const motivationSecondaryChangeHandler = (value) => {
-		let selected = MOTIVATION_SECONDARY.find(x => x.id === parseInt(value))
-		console.log("secondary motivation selected", selected)
+		// let selected = MOTIVATION_SECONDARY.find(x => x.id === parseInt(value))
+		console.log("secondary motivation selected", value)
+		props.onMotivationSecondaryChange(value);
 	}
 
 	const armourChangeHandler = () => {
@@ -82,7 +83,7 @@ const CardConfig = (props) => {
 		let crossCountry = document.getElementById('crossCountry').value;
 		let road = document.getElementById('road').value;
 		let cross = document.getElementById('cross').value;
-		let movementForm = {tactical, terrain, crossCountry, road, cross};
+		let movementForm = { tactical, terrain, crossCountry, road, cross };
 		props.onVehicleMovementChange(movementForm);
 	}
 
@@ -117,6 +118,20 @@ const CardConfig = (props) => {
 					<div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
+						id='1'
+							statName='motivation'
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							id='2'
+							statName='motivation'
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							id='3'
+							statName='motivation'
 							onSelectChange={ motivationSecondaryChangeHandler }
 							options={ MOTIVATION_SECONDARY }>
 						</ConfigSelect>
@@ -133,9 +148,19 @@ const CardConfig = (props) => {
 					<div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
-							defaultValue={ MOTIVATION_SECONDARY[0].id }
+							defaultValue={ SKILL_SECONDARY[0].id }
 							onSelectChange={ motivationSecondaryChangeHandler }
-							options={ MOTIVATION_SECONDARY }>
+							options={ SKILL_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							defaultValue={ SKILL_SECONDARY[0].id }
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							defaultValue={ SKILL_SECONDARY[0].id }
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 					</div>
 				</div>
@@ -149,8 +174,19 @@ const CardConfig = (props) => {
 					</div>
 					<div className='label-secondary'><label>Secondary</label></div>
 					<ConfigSelect
+						defaultValue={ HITON[0].id }
 						onSelectChange={ motivationSecondaryChangeHandler }
-						options={ MOTIVATION_SECONDARY }>
+						options={ HITON }>
+					</ConfigSelect>
+					<ConfigSelect
+						defaultValue={ HITON[0].id }
+						onSelectChange={ motivationSecondaryChangeHandler }
+						options={ HITON }>
+					</ConfigSelect>
+					<ConfigSelect
+						defaultValue={ HITON[0].id }
+						onSelectChange={ motivationSecondaryChangeHandler }
+						options={ HITON }>
 					</ConfigSelect>
 				</div>
 				<div className='flex inputField vertical'>
@@ -171,7 +207,7 @@ const CardConfig = (props) => {
 
 			</div>
 
-		
+
 			<div className='form-container flex column'>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Movement</label></div>

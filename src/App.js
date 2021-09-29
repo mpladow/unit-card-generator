@@ -4,10 +4,10 @@ import './App.css';
 import './scss/Layout.scss';
 import CardCreator from './Components/CardCreator/CardCreator';
 import ConfigForm from './Components/CardCreator/UI/ConfigForm';
-
+import config from './Config/config.json';
 
 function App() {
-	const [darkMode, setDarkMode] = useState(true);
+	const [darkMode, setDarkMode] = useState('dark-mode');
 	const darkModeChangeHandler = (value) => {
 		setDarkMode(value);
 	}

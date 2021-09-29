@@ -36,11 +36,15 @@
 	}
 	.stat-secondary {
 		background-color: white;
+		color: black;
+		border-radius: 4px;
+		font-size: 12px;
+		
 	}
 	.sectionCard-inner {
 		border-radius: 5px;
 		padding: 2px;
-		background-color: white;
+		background-color: #ddd;
 
 	}
 }
