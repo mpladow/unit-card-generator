@@ -94,7 +94,40 @@ const CardCreator = (props) => {
 		},
 
 		save: null,
-		weapons: []
+		weapons: [{
+			id: "1",
+			weaponName: "75mm turret",
+			range: "12mm",
+			movingRof: "2",
+			haltedRof: 2,
+			haltedType: null,// salvo or arty
+			movingType: null,// salvo or arty
+			AT: 12,
+			FP: "5+",
+			artillery: false,
+			specialRules: [
+				{
+					ruleId: 1,
+					name: "Stabalizers",
+					description: "Fires 2 shots at moving ROF, but hit is increased by 1",
+					descriptionSecondary: "US Shermans wer equiped with stabalisers"
+
+				},
+				{
+					ruleId: 1,
+					name: "No HE",
+					description: "unable to fire high explosive rounds"
+				}
+			]
+
+		}],
+		rules: [// rules that appear on the card
+			{
+				id: 1,
+				name: "Gun",
+				description: "This team has a worse assault rating"
+			}
+		]
 	})
 
 	const teamNameChangeHandler = (value) => {
@@ -140,10 +173,6 @@ const CardCreator = (props) => {
 		})
 	}
 	const updateSecondaryStatHandler = (result) => {
-
-		// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
-		// newSecondaryMotivation = result;
-
 		setCardDetails((prevState) => {
 			let temp = {
 				...prevState,
@@ -183,7 +212,7 @@ const CardCreator = (props) => {
 			return temp;
 		});
 	}
-	
+
 
 	return (
 		<div className='card-creator'>
