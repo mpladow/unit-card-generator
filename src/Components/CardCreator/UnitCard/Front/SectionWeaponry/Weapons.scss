@@ -1,0 +1,51 @@
+.weaponryCard {
+	padding: 0.1em;
+	border-radius: 7px;
+	height: 100%;
+	margin-top: 0.2em;
+	padding-top: 0;
+	input {
+		background: none;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	.weaponry-label {
+		display: flex;
+		justify-content: center;
+		label {
+			font-size: 9px;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: white;
+		}
+	}
+	.stat-main {
+		display: flex;
+		justify-content: center;
+		border-radius: 4px;
+		background-color: red;
+		input {
+			text-transform: uppercase;
+			font-weight: bold;
+			color: white;
+		}
+	}
+	.weaponry-value-first {
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+	.weaponry-value-last {
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
+	.weaponry-value {
+		background-color: white;
+		color: black;
+		font-size: 14px;
+		border-left: 1.5px solid #000;
+	}
+}

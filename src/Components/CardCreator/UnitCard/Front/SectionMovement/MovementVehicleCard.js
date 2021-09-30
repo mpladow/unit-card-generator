@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import '../../../UI/Card.scss';
 import '../../../../../scss/Layout.scss';
-import './MovementVehicleCard.scss'
+import './MovementVehicleCard.scss';
 
 const MovementVehicleCard = (props) => {
 
