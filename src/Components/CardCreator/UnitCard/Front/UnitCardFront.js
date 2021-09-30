@@ -11,7 +11,7 @@ import Armour from './SectionArmour/Armour';
 
 const UnitCardFront = (props) => {
 
-
+let x = 1;
 
 	return <div>
 		<Card currentTheme={ props.currentCard.theme }>

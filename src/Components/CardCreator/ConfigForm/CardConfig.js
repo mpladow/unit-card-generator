@@ -64,8 +64,15 @@ const CardConfig = (props) => {
 		let selected = UNIT_TYPES.find(x => x.name === event.target.value)
 	}
 	const motivationSecondaryChangeHandler = (value) => {
-		let selected = MOTIVATION_SECONDARY.find(x => x.id === parseInt(value))
-		console.log("secondary motivation selected", selected)
+		console.log("secondary motivation selected", value)
+		props.onSecondaryStatChange({"stat": "motivation", value: value});
+	}
+	const skillSecondaryChangeHandler = (value) => {
+		console.log("secondary motivation selected", value)
+		props.onSecondaryStatChange({"stat": "skill", value: value});
+	}
+	const hitonSecondaryChangeHandler = (value) => {
+		props.onSecondaryStatChange({"stat": "hiton", value: value});
 	}
 
 	const armourChangeHandler = () => {
@@ -82,7 +89,7 @@ const CardConfig = (props) => {
 		let crossCountry = document.getElementById('crossCountry').value;
 		let road = document.getElementById('road').value;
 		let cross = document.getElementById('cross').value;
-		let movementForm = {tactical, terrain, crossCountry, road, cross};
+		let movementForm = { tactical, terrain, crossCountry, road, cross };
 		props.onVehicleMovementChange(movementForm);
 	}
 
@@ -117,6 +124,20 @@ const CardConfig = (props) => {
 					<div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
+						id='1'
+							statName='motivation'
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							id='2'
+							statName='motivation'
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							id='3'
+							statName='motivation'
 							onSelectChange={ motivationSecondaryChangeHandler }
 							options={ MOTIVATION_SECONDARY }>
 						</ConfigSelect>
@@ -133,9 +154,21 @@ const CardConfig = (props) => {
 					<div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
-							defaultValue={ MOTIVATION_SECONDARY[0].id }
-							onSelectChange={ motivationSecondaryChangeHandler }
-							options={ MOTIVATION_SECONDARY }>
+							id='1'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
+						</ConfigSelect>						<ConfigSelect
+							id='2'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
+						</ConfigSelect>
+						<ConfigSelect
+							id='3'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 					</div>
 				</div>
@@ -147,11 +180,6 @@ const CardConfig = (props) => {
 							{ HITON.map((m => <option value={ m.id }>{ m.name }</option>)) }
 						</select>
 					</div>
-					<div className='label-secondary'><label>Secondary</label></div>
-					<ConfigSelect
-						onSelectChange={ motivationSecondaryChangeHandler }
-						options={ MOTIVATION_SECONDARY }>
-					</ConfigSelect>
 				</div>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Armour</label></div>
@@ -171,7 +199,7 @@ const CardConfig = (props) => {
 
 			</div>
 
-		
+
 			<div className='form-container flex column'>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Movement</label></div>

@@ -6,8 +6,10 @@ import '../SectionCard/SectionCard.scss'
 const SectionCard = (props) => {
 
 	let stat = props.stat;
+	let linkedValue = stat.linkedValue;
 	const classesCardInner = `sectionCard-inner ${props.currentTheme.cardInner}`;
 	const classesCard = `sectionCard ${props.currentTheme.bgColor}`;
+
 
 	// let linkedStats = props.stat.linkedValue.map(sta =>
 	// 	<div className="sectionCardSecondary">
@@ -25,7 +27,14 @@ const SectionCard = (props) => {
 				<div className="stat-main">
 					<div> { stat.statDetail.value }</div>
 				</div>
-				{/* { linkedStats } */}
+				{ linkedValue.map(x => {
+					if (x.name != '')
+					 return <div>
+						<div className='stat-secondary'>
+							{ x.name } { x.value }
+						</div>
+					</div>
+				}) }
 			</div>
 		</div>
 	</div>;

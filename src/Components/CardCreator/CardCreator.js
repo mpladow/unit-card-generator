@@ -45,6 +45,7 @@ const CardCreator = (props) => {
 	const [cardMotivation, setMotivation] = useState({})
 	const [cardSkill, setSkill] = useState({});
 	const [cardHitOn, setHitOn] = useState({});
+	const [cardSecondaryMotivation, setSecondaryMotivation] = useState([]);
 
 	let [cardDetails, setCardDetails] = useState({
 		theme: cardTheme,
@@ -56,12 +57,15 @@ const CardCreator = (props) => {
 				labelPrimary: "Motivation",
 				statDetail: cardMotivation,
 				linkedValue: []
+				// cardSecondaryMotivation
 			},
 
 			{
 				labelPrimary: "Skill",
 				statDetail: cardSkill,
-				linkedValue: []
+				linkedValue: [
+					// { name: 'Tactics', value: "5+" }
+				]
 				// linkedValue: [
 				// 	{
 				// 		labelPrimary: "Text in italics"
@@ -90,7 +94,40 @@ const CardCreator = (props) => {
 		},
 
 		save: null,
-		weapons: []
+		weapons: [{
+			id: "1",
+			weaponName: "75mm turret",
+			range: "12mm",
+			movingRof: "2",
+			haltedRof: 2,
+			haltedType: null,// salvo or arty
+			movingType: null,// salvo or arty
+			AT: 12,
+			FP: "5+",
+			artillery: false,
+			specialRules: [
+				{
+					ruleId: 1,
+					name: "Stabalizers",
+					description: "Fires 2 shots at moving ROF, but hit is increased by 1",
+					descriptionSecondary: "US Shermans wer equiped with stabalisers"
+
+				},
+				{
+					ruleId: 1,
+					name: "No HE",
+					description: "unable to fire high explosive rounds"
+				}
+			]
+
+		}],
+		rules: [// rules that appear on the card
+			{
+				id: 1,
+				name: "Gun",
+				description: "This team has a worse assault rating"
+			}
+		]
 	})
 
 	const teamNameChangeHandler = (value) => {
@@ -135,6 +172,46 @@ const CardCreator = (props) => {
 			}
 		})
 	}
+	const updateSecondaryStatHandler = (result) => {
+		setCardDetails((prevState) => {
+			let temp = {
+				...prevState,
+				stats: [...prevState.stats]
+			}
+			// change the values we need
+
+			let linkedStats = prevState.stats.find(x => x.labelPrimary.toLowerCase() == result.stat).linkedValue
+			let secondaryStat = linkedStats.find(x => x.id == result.value.id);
+			let filteredStats = [...linkedStats];
+			if (secondaryStat != null) {
+
+				// 	// if the name is null, then remove this value
+				if (result.name == '') {
+
+					filteredStats = filteredStats.filter(x => {
+						return x.id != parseInt(result.value.id);
+					})
+				}
+				// else update this value
+				else {
+					filteredStats.forEach(stat => {
+						if (stat.id == result.value.id) {
+							stat.name = result.value.name;
+							stat.value = result.value.value;
+						}
+						return stat;
+					})
+				}
+				// else delete this item
+			} else {
+				filteredStats.push(result.value);
+				// add this item to the array
+			}
+
+			temp.stats.find(x => x.labelPrimary.toLowerCase() == result.stat).linkedValue = filteredStats;
+			return temp;
+		});
+	}
 
 
 	return (
@@ -142,26 +219,30 @@ const CardCreator = (props) => {
 			<div className="card-interface">
 
 				<UnitCardFront
-					onTeamNameChange={ teamNameChangeHandler }
-					onTeamClassChange={ teamClassChangeHandler }
-					currentCard={ cardDetails }
+					onTeamNameChange={teamNameChangeHandler}
+					onTeamClassChange={teamClassChangeHandler}
+					currentCard={cardDetails}
 				></UnitCardFront>
 				<UnitCardBack
-					onTeamNameChange={ teamNameChangeHandler }
-					onTeamClassChange={ teamClassChangeHandler }
-					currentCard={ cardDetails }>
+					onTeamNameChange={teamNameChangeHandler}
+					onTeamClassChange={teamClassChangeHandler}
+					currentCard={cardDetails}>
 
 				</UnitCardBack>
 			</div>
 			<div className="card-form">
 				<CardConfig
-					onCardBgColorChange={ updateCardBgColorHandler }
-					onMotivationChange={ updateStatHandler }
-					onSkillChange={ updateStatHandler }
-					onHitOnChange={ updateStatHandler }
-					onArmourChange={ updateArmourHandler }
-					onVehicleMovementChange={ setVehicleMovement }
-					currentCard={ cardDetails }
+					onCardBgColorChange={updateCardBgColorHandler}
+					onMotivationChange={updateStatHandler}
+					onSkillChange={updateStatHandler}
+					onHitOnChange={updateStatHandler}
+					onArmourChange={updateArmourHandler}
+					onVehicleMovementChange={setVehicleMovement}
+					onSecondaryStatChange={updateSecondaryStatHandler}
+
+
+
+					currentCard={cardDetails}
 				></CardConfig>
 			</div>
 		</div>
