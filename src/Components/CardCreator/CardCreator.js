@@ -139,7 +139,7 @@ const CardCreator = (props) => {
 			}
 		})
 	}
-	const updateMotivationSecondary = (result) => {
+	const updateSecondaryStatHandler = (result) => {
 
 		// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
 		// newSecondaryMotivation = result;
@@ -151,8 +151,8 @@ const CardCreator = (props) => {
 			}
 			// change the values we need
 
-			let linkedStats = prevState.stats.find(x => x.labelPrimary == "Motivation").linkedValue
-			let secondaryStat = linkedStats.find(x => x.id == result.id);
+			let linkedStats = prevState.stats.find(x => x.labelPrimary.toLowerCase() == result.stat).linkedValue
+			let secondaryStat = linkedStats.find(x => x.id == result.value.id);
 			let filteredStats = [...linkedStats];
 			if (secondaryStat != null) {
 
@@ -160,120 +160,30 @@ const CardCreator = (props) => {
 				if (result.name == '') {
 
 					filteredStats = filteredStats.filter(x => {
-						return x.id != parseInt(result.id);
+						return x.id != parseInt(result.value.id);
 					})
 				}
 				// else update this value
 				else {
 					filteredStats.forEach(stat => {
-						if (stat.id == result.id) {
-							stat.name = result.name;
-							stat.value = result.value;
+						if (stat.id == result.value.id) {
+							stat.name = result.value.name;
+							stat.value = result.value.value;
 						}
 						return stat;
 					})
 				}
 				// else delete this item
 			} else {
-				filteredStats.push(result);
+				filteredStats.push(result.value);
 				// add this item to the array
 			}
 
-			// let newStats = cardDetails.stats.map(stat => {
-			// 	if (stat.labelPrimary == "Motivation") {
-			// 		return { ...stat, linkedValue: cardSecondaryMotivation };
-			// 	}
-			// 	return stat;
-			// })
-			temp.stats.find(x => x.labelPrimary == "Motivation").linkedValue = filteredStats;
+			temp.stats.find(x => x.labelPrimary.toLowerCase() == result.stat).linkedValue = filteredStats;
 			return temp;
 		});
 	}
-	const updateSkillSecondary = (result) => {
-
-		// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
-		// newSecondaryMotivation = result;
-
-		setCardDetails((prevState) => {
-			let temp = {
-				...prevState,
-				stats: [...prevState.stats]
-			}
-			// change the values we need
-
-			let linkedStats = prevState.stats.find(x => x.labelPrimary == "Skill").linkedValue
-			let secondaryStat = linkedStats.find(x => x.id == result.id);
-			let filteredStats = [...linkedStats];
-			if (secondaryStat != null) {
-
-				// 	// if the name is null, then remove this value
-				if (result.name == '') {
-
-					filteredStats = filteredStats.filter(x => {
-						return x.id != parseInt(result.id);
-					})
-				}
-				// else update this value
-				else {
-					filteredStats.forEach(stat => {
-						if (stat.id == result.id) {
-							stat.name = result.name;
-							stat.value = result.value;
-						}
-						return stat;
-					})
-				}
-				// else delete this item
-			} else {
-				filteredStats.push(result);
-				// add this item to the array
-			}
-
-			// let newStats = cardDetails.stats.map(stat => {
-			// 	if (stat.labelPrimary == "Motivation") {
-			// 		return { ...stat, linkedValue: cardSecondaryMotivation };
-			// 	}
-			// 	return stat;
-			// })
-			temp.stats.find(x => x.labelPrimary == "Skill").linkedValue = filteredStats;
-			return temp;
-		});
-	}
-	// const updateMotivationSecondary = (result) => {
-	// 	// let newSecondaryMotivation = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
-	// 	// newSecondaryMotivation = result;
-	// 	let motivationStat = cardDetails.stats.find(x => x.labelPrimary === 'Motivation').linkedValue;
-	// 	let secondaryStat = motivationStat.find(x => x.id === result.id);
-
-	// 	let filteredStats = [];
-	// 	if (secondaryStat != null) {
-
-	// 		// if the name is null, then remove this value
-	// 		if (result.name === '') {
-	// 			filteredStats = motivationStat.filter(x => {
-	// 				return x.id !== result.id;
-	// 			})
-	// 		}
-	// 		// else update this value
-	// 		else {
-	// 			filteredStats = motivationStat.map(stat => {
-	// 				if (stat.id === result.id) {
-	// 					return { ...stat, linkedValue: result }
-	// 				}
-	// 				return stat;
-	// 			})
-	// 		}
-	// 		// else delete this item
-	// 	} else {
-	// 		filteredStats.push(result);
-	// 		// add this item to the array
-	// 	}
-
-	// 	// remove 
-	// 	// update the linkedValue array.
-
-	// }
-
+	
 
 	return (
 		<div className='card-creator'>
@@ -299,8 +209,8 @@ const CardCreator = (props) => {
 					onHitOnChange={updateStatHandler}
 					onArmourChange={updateArmourHandler}
 					onVehicleMovementChange={setVehicleMovement}
-					onMotivationSecondaryChange={updateMotivationSecondary}
-					onSkillSecondaryChange={ updateSkillSecondary }
+					onSecondaryStatChange={updateSecondaryStatHandler}
+
 
 
 					currentCard={cardDetails}
