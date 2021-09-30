@@ -27,11 +27,14 @@ const SectionCard = (props) => {
 				<div className="stat-main">
 					<div> { stat.statDetail.value }</div>
 				</div>
-				{ linkedValue.map(x => <div>
-					<div className='stat-secondary'>
-						{x.name} { x.value }
+				{ linkedValue.map(x => {
+					if (x.name != '')
+					 return <div>
+						<div className='stat-secondary'>
+							{ x.name } { x.value }
+						</div>
 					</div>
-				</div>) }
+				}) }
 			</div>
 		</div>
 	</div>;

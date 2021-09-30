@@ -13,21 +13,21 @@ const ConfigSelect = (props) => {
 		props.onSelectChange({ id: id, name: name, value: value })
 	}
 	const options = props.options;
-	let statId = `${props.statName}_${props.id}`
+	let statId = `${props.statName}Id_${props.id}`
 	let statName = `${props.statName}Name_${props.id}`;
 	let statValue = `${props.statName}Value_${props.id}`;
 	return <div>
 		<div className='select'>
 			<input type='hidden' id={statId} value={props.id}></input>
 			<select onChange={ selectChangeHandler } id={ statName } class='motivation-secondary-name'>
-				<option>Empty</option>
+				<option value=''>Empty</option>
 				{ options.map(o => <option value={ o.name }>{ o.name }</option>) }
 			</select>
 			<select onChange={ selectChangeHandler } id={ statValue } class='motivation-secondary-value'>
 
 				<option value='3+'>3+</option>
 				<option value='4+'>4+</option>
-				<option value='3+'>5+</option>
+				<option value='5+'>5+</option>
 			</select>
 		</div>
 	</div>

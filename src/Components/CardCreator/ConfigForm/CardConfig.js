@@ -64,8 +64,14 @@ const CardConfig = (props) => {
 		let selected = UNIT_TYPES.find(x => x.name === event.target.value)
 	}
 	const motivationSecondaryChangeHandler = (value) => {
-		// let selected = MOTIVATION_SECONDARY.find(x => x.id === parseInt(value))
 		console.log("secondary motivation selected", value)
+		props.onMotivationSecondaryChange(value);
+	}
+	const skillSecondaryChangeHandler = (value) => {
+		console.log("secondary motivation selected", value)
+		props.onMotivationSecondaryChange(value);
+	}
+	const hitonSecondaryChangeHandler = (value) => {
 		props.onMotivationSecondaryChange(value);
 	}
 
@@ -148,18 +154,20 @@ const CardConfig = (props) => {
 					<div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
-							defaultValue={ SKILL_SECONDARY[0].id }
-							onSelectChange={ motivationSecondaryChangeHandler }
+							id='1'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
+						</ConfigSelect>						<ConfigSelect
+							id='2'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
 							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 						<ConfigSelect
-							defaultValue={ SKILL_SECONDARY[0].id }
-							onSelectChange={ motivationSecondaryChangeHandler }
-							options={ SKILL_SECONDARY }>
-						</ConfigSelect>
-						<ConfigSelect
-							defaultValue={ SKILL_SECONDARY[0].id }
-							onSelectChange={ motivationSecondaryChangeHandler }
+							id='3'
+							statName='skill'
+							onSelectChange={ skillSecondaryChangeHandler }
 							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 					</div>
