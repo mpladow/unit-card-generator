@@ -4,8 +4,13 @@
 	height: 100%;
 	margin-top: 0.2em;
 	padding-top: 0;
-	&.main{
-		background-color: black;
+
+	.weaponryCard-inner {
+		background-color: whitesmoke;
+		border-radius: 6px;
+		&.main{
+			background-color: grey;
+		}
 	}
 	input {
 		background: none;
@@ -46,8 +51,8 @@
 		border-bottom-right-radius: 6px;
 	}
 	.weaponry-value {
-		background-color: white;
-		color: black;
+		// background-color: white;
+		// color: black;
 		font-size: 14px;
 		border-left: 1.5px solid #000;
 	}

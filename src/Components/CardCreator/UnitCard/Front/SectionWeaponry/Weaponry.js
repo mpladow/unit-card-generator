@@ -1,5 +1,6 @@
 import React from 'react'
 import WeaponDetails from "./WeaponDetails";
+import '../../../../../scss/Layout.scss';
 import '../SectionWeaponry/Weaponry.scss';
 
 

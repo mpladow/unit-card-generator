@@ -4,12 +4,12 @@ import './Weaponry.scss';
 const WeaponDetails = (props) => {
 
     const weapon = props.weapon;
-    const classesCardInner = `weaponryCard-inner ${props.currentTheme.cardInner} ${weapon.main === true? 'main' : ''}`;
+    const classesCardInner = `weaponryCard-inner ${weapon.main == true? 'main' : ''}`;
 
     const weaponNotes = weapon.rules.map(x => x.name).join(", ")
     return <div>
         <div className={classesCardInner} >
-            <div className='row'>
+            <div className='row align-center'>
                 <div className='column-name'>
                     <div className="weaponry-value weaponry-value-first">
                         {weapon.name}
@@ -21,7 +21,7 @@ const WeaponDetails = (props) => {
                     </div>
                 </div>
                 <div className='column-halted'>
-                    <div className="weaponry-value">
+                    <div className='weaponry-value'>
                         {weapon.haltedRof}
                     </div>
                 </div>
