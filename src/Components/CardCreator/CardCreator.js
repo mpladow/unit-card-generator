@@ -38,6 +38,13 @@ const CardCreator = (props) => {
 		{ id: 1, name: "Careful 4+", value: "Careful 4+" },
 		{ id: 2, name: "Aggressive 3+", value: "Aggressive 3+" },
 		{ id: 3, name: "Reckless 2+", value: "Reckless 2+" },
+	];
+	const RULES = [
+		{
+			id: 1,
+			name: "Smoke",
+			description: "This unit can fire a smoke bombardment"
+		}
 	]
 	// END TEMP
 
@@ -240,6 +247,9 @@ const CardCreator = (props) => {
 			return temp;
 		});
 	}
+	const addWeaponHandler = () => {
+
+	}
 
 
 	return (
@@ -267,8 +277,7 @@ const CardCreator = (props) => {
 					onArmourChange={updateArmourHandler}
 					onVehicleMovementChange={setVehicleMovement}
 					onSecondaryStatChange={updateSecondaryStatHandler}
-
-
+					onWeaponAddPush = {addWeaponHandler}
 					currentCard={cardDetails}
 				></CardConfig>
 			</div>
