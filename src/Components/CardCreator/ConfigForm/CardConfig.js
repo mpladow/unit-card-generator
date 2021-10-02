@@ -1,5 +1,6 @@
 import react from 'react';
 import './CardConfig.scss';
+import ConfigDynamicList from './ConfigWeapon';
 import ConfigSelect from './ConfigSelect';
 
 const CardConfig = (props) => {
@@ -40,6 +41,35 @@ const CardConfig = (props) => {
 		{ id: 1, name: "Careful 4+", value: "Careful 4+" },
 		{ id: 2, name: "Aggressive 3+", value: "Aggressive 3+" },
 		{ id: 3, name: "Reckless 2+", value: "Reckless 2+" },
+	]
+	const weapons = [
+		{
+			id: "1",
+			name: "75mm turret",
+			range: "12mm",
+			movingRof: "2",
+			haltedRof: 2,
+			haltedType: null,// salvo or arty
+			movingType: null,// salvo or arty
+			AT: 12,
+			FP: "5+",
+			artillery: false,
+			main: true,
+			rules: [
+				{
+					ruleId: 1,
+					name: "Stabalizers",
+					description: "Fires 2 shots at moving ROF, but hit is increased by 1",
+					descriptionSecondary: "US Shermans wer equiped with stabalisers"
+
+				},
+				{
+					ruleId: 1,
+					name: "No HE",
+					description: "unable to fire high explosive rounds"
+				}
+			]
+		}
 	]
 	const currentCard = props.currentCard;
 
@@ -91,6 +121,20 @@ const CardConfig = (props) => {
 		let cross = document.getElementById('cross').value;
 		let movementForm = { tactical, terrain, crossCountry, road, cross };
 		props.onVehicleMovementChange(movementForm);
+	}
+	const deleteWeaponHandler = (id) => {
+		// push 
+		weapons = weapons.filter(x => x.id != id);
+	}
+	const addWeaponHandler = () => {
+		let lastWeapon = weapons.at(-1);
+		weapons.push({
+			id: lastWeapon["id"],
+			name: "new Weapon",
+			range: "12mm",
+			movingRof: "2",
+			haltedRof: 2
+		})
 	}
 
 
@@ -218,57 +262,14 @@ const CardConfig = (props) => {
 					<div className='label'><label>Road Dash</label></div>
 					<div className='input'>
 						<input onChange={movementChangeHandler} id='road' type='text'></input>
-					</div>
-					<div className='label'><label>Cross</label></div>
+					</div>					<div className='label'><label>Cross</label></div>
 					<div className='input'>
 						<input onChange={movementChangeHandler} id='cross' type='text'></input>
 					</div>
+					{weapons.map(x => <ConfigDynamicList fieldName="Weapons" weapon={x} onWeaponDelete={deleteWeaponHandler}></ConfigDynamicList>)}
+					<button onClick={addWeaponHandler}>Add Weapon</button>
 				</div>
-				<div className='label'><label>Weapons</label></div>
-				<div className='form-container flex row'>
-					<div className='flex column'>
-						<div className='label'><label>Name</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>Range</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>Halted ROF</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>Moving ROF</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>AP</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>FP</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-					<div className='flex column'>
-						<div className='label'><label>Rules</label></div>
-						<div className='input'>
-							<input onChange={movementChangeHandler} id='tactical' type='text'></input>
-						</div>
-					</div>
-				</div>
+
 			</div>
 
 		</div>
