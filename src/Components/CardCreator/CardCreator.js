@@ -81,6 +81,25 @@ const CardCreator = (props) => {
 			description: "+1 To Hit for Moving ROF .",
 		}
 	]
+	const UNIT_TYPE = [
+		{
+			id: 1,
+			name: "tank"
+		},
+		{
+			id: 2,
+			name: "infantry"
+		},
+		{
+			id: 3,
+			name: "gun"
+		},
+		{
+			id: 4,
+			name: "plane"
+		},
+
+	]
 	// END TEMP
 
 	const [cardTheme, setCardTheme] = useState(THEMES[0]);
@@ -93,7 +112,10 @@ const CardCreator = (props) => {
 		theme: cardTheme,
 		teamName: 'm4 sherman',
 		teamClass: 'veteran tank company hq',
-		unitType: {},
+		unitType: {
+			id: 1,
+			name: "tank"
+		},
 		stats: [
 			{
 				labelPrimary: "Motivation",
@@ -227,6 +249,14 @@ const CardCreator = (props) => {
 			additionalRules: additionalRules
 		})
 	}
+	const updateUnitType = (result) => {
+		let entity = UNIT_TYPE.find(x => parseInt(x.id) == result)
+
+		setCardDetails({
+			...cardDetails,
+			unitType: entity
+		})
+	}
 	const updateSecondaryStatHandler = (result) => {
 		setCardDetails((prevState) => {
 			let temp = {
@@ -349,6 +379,7 @@ const CardCreator = (props) => {
 					onWeaponDelete={ deleteWeaponHandler }
 					onWeaponAdd={ addWeaponHandler }
 					onAdditionalRulesChange={ updateAdditionalRulesHandler }
+					onUnitTypeChange={ updateUnitType }
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>

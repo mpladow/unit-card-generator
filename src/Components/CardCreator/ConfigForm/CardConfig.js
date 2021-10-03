@@ -140,6 +140,10 @@ const CardConfig = (props) => {
 		props.onHitOnChange({ selected: selected, statName: "Motivation" })
 
 	}
+	const unitTypeChangeHandler = (event) => {
+		let value = event.target.value;
+		props.onUnitTypeChange(value)
+	}
 	const skillChangeHandler = (event) => {
 		let selected = SKILL.find(c => c.id === parseInt(event.target.value))
 		props.onHitOnChange({ selected: selected, statName: "Skill" })
