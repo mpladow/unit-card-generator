@@ -6,7 +6,7 @@ const WeaponDetails = (props) => {
     const weapon = props.weapon;
     const classesCardInner = `weaponryCard-inner ${weapon.main == true? 'main' : ''}`;
 
-    const weaponNotes = weapon.rules.map(x => x.name).join(", ")
+    const weaponNotes = weapon.rules != null? weapon.rules.map(x => x.name).join(", ") : '';
     return <div>
         <div className={classesCardInner} >
             <div className='row align-center'>

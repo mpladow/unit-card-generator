@@ -127,33 +127,6 @@ const CardCreator = (props) => {
 					description: "unable to fire high explosive rounds"
 				}
 			]
-		},
-		{
-			id: "1",
-			name: "75mm turret",
-			range: "12mm",
-			movingRof: "2",
-			haltedRof: 2,
-			haltedType: null,// salvo or arty
-			movingType: null,// salvo or arty
-			AT: 12,
-			FP: "5+",
-			artillery: false,
-			rules: [
-				{
-					ruleId: 1,
-					name: "Stabalizers",
-					description: "Fires 2 shots at moving ROF, but hit is increased by 1",
-					descriptionSecondary: "US Shermans wer equiped with stabalisers"
-
-				},
-				{
-					ruleId: 1,
-					name: "No HE",
-					description: "unable to fire high explosive rounds"
-				}
-			]
-
 		}
 		],
 		rules: [// rules that appear on the card
@@ -247,8 +220,46 @@ const CardCreator = (props) => {
 			return temp;
 		});
 	}
-	const addWeaponHandler = () => {
+	const updateWeaponsHandler = (weaponUpdated) => {
+		console.log("Updated weapon")
+		setCardDetails((prevState) => {
+			let temp = {
+				...prevState,
+				weapons: [...prevState.weaponry]
+			}
 
+			Object.assign(temp.weaponry.find(x => x.id == weaponUpdated.id), weaponUpdated);
+			// temp.weaponry.find(x => x.id == weaponUpdated.id) = weaponUpdated;
+			return temp;
+		})
+	}
+	const deleteWeaponHandler = (id) => {
+		let itemToDelete = cardDetails.weaponry.find(x => x.id == id);
+		setCardDetails((prevState) => {
+			let temp = {
+				...prevState, 
+				weaponry: prevState.weaponry.filter(x => x.id != id)
+			}
+			return temp;
+		});
+	}
+	const addWeaponHandler = () => {
+		console.log("Adding weapon")
+		let lastWeapon = cardDetails.weaponry.at(-1);
+		let newWeapon = {
+			id: parseInt(lastWeapon["id"]) + 1,
+			name: "new Weapon",
+			range: "12mm",
+			movingRof: "2",
+			haltedRof: 2
+		};
+		setCardDetails((prevState) => {
+			let temp = {
+				...prevState,
+				weaponry: [...prevState.weaponry, newWeapon]
+			}
+			return temp;
+		})
 	}
 
 
@@ -257,28 +268,30 @@ const CardCreator = (props) => {
 			<div className="card-interface">
 
 				<UnitCardFront
-					onTeamNameChange={teamNameChangeHandler}
-					onTeamClassChange={teamClassChangeHandler}
-					currentCard={cardDetails}
+					onTeamNameChange={ teamNameChangeHandler }
+					onTeamClassChange={ teamClassChangeHandler }
+					currentCard={ cardDetails }
 				></UnitCardFront>
 				<UnitCardBack
-					onTeamNameChange={teamNameChangeHandler}
-					onTeamClassChange={teamClassChangeHandler}
-					currentCard={cardDetails}>
+					onTeamNameChange={ teamNameChangeHandler }
+					onTeamClassChange={ teamClassChangeHandler }
+					currentCard={ cardDetails }>
 
 				</UnitCardBack>
 			</div>
 			<div className="card-form">
 				<CardConfig
-					onCardBgColorChange={updateCardBgColorHandler}
-					onMotivationChange={updateStatHandler}
-					onSkillChange={updateStatHandler}
-					onHitOnChange={updateStatHandler}
-					onArmourChange={updateArmourHandler}
-					onVehicleMovementChange={setVehicleMovement}
-					onSecondaryStatChange={updateSecondaryStatHandler}
-					onWeaponAddPush = {addWeaponHandler}
-					currentCard={cardDetails}
+					onCardBgColorChange={ updateCardBgColorHandler }
+					onMotivationChange={ updateStatHandler }
+					onSkillChange={ updateStatHandler }
+					onHitOnChange={ updateStatHandler }
+					onArmourChange={ updateArmourHandler }
+					onVehicleMovementChange={ setVehicleMovement }
+					onSecondaryStatChange={ updateSecondaryStatHandler }
+					onWeaponUpdate={ updateWeaponsHandler }
+					onWeaponDelete={ deleteWeaponHandler }
+					onWeaponAdd={ addWeaponHandler }
+					currentCard={ cardDetails }
 				></CardConfig>
 			</div>
 		</div>
