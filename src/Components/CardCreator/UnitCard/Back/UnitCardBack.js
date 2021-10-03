@@ -17,14 +17,12 @@ const UnitCardBack = (props) => {
 let x = 0;
 	return <div>
 		<Card currentTheme={ props.currentCard.theme }>
-
 			<CardTitle
 				onTeamNameChange={ props.onTeamNameChange }
 				onTeamClassChange={ props.onTeamClassChange }
 				teamName={ props.currentCard.teamName }
 				teamClass={ props.currentCard.teamClass }
 				currentTheme={ props.currentCard.theme }>
-
 			</CardTitle>
 
 		</Card>

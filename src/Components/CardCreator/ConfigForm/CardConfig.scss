@@ -4,6 +4,9 @@
 	.inputField {
 		margin: 1em 0;
 		display: flex;
+		.numeric{
+			width: 50px;
+		}
 		.label {
 			padding: 0.25em;
 		}

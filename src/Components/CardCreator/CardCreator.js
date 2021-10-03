@@ -42,8 +42,43 @@ const CardCreator = (props) => {
 	const RULES = [
 		{
 			id: 1,
+			name: "Stabilizers",
+			description: "+1 To Hit for Moving ROF.",
+		},
+		{
+			id: 2,
+			name: "Self-defence AA",
+			description: "Weapon can fire at Aircraft with ROF 1.",
+		},
+		{
+			id: 3,
+			name: "No HE",
+			description: "No HE targeting Infantry or Guns adds +1 to the score needed To Hit.",
+		},
+		{
+			id: 4,
 			name: "Smoke",
-			description: "This unit can fire a smoke bombardment"
+			description: "Can Shoot Smoke ammunication.",
+		},
+		{
+			id: 5,
+			name: "Assault 4+",
+			description: "Team hits on 4+ in Assaults",
+		},
+		{
+			id: 6,
+			name: "Heavy Weapon",
+			description: "Team cannot Charge into Contact",
+		},
+		{
+			id: 7,
+			name: "Observer",
+			description: "Unit Leader can Spot for any friendly Artillery Unit.",
+		},
+		{
+			id: 8,
+			name: "Slow Firing",
+			description: "+1 To Hit for Moving ROF .",
 		}
 	]
 	// END TEMP
@@ -115,14 +150,14 @@ const CardCreator = (props) => {
 			main: true,
 			rules: [
 				{
-					ruleId: 1,
+					id: 1,
 					name: "Stabalizers",
 					description: "Fires 2 shots at moving ROF, but hit is increased by 1",
 					descriptionSecondary: "US Shermans wer equiped with stabalisers"
 
 				},
 				{
-					ruleId: 1,
+					id: 2,
 					name: "No HE",
 					description: "unable to fire high explosive rounds"
 				}
@@ -133,7 +168,8 @@ const CardCreator = (props) => {
 			{
 				id: 1,
 				name: "Gun",
-				description: "This team has a worse assault rating"
+				description: "This team has a worse assault rating",
+				showInFront: false
 			}
 		]
 	})
@@ -180,6 +216,17 @@ const CardCreator = (props) => {
 			}
 		})
 	}
+	const updateAdditionalRulesHandler = (result) => {
+		let additionalRules = result.map(x => {
+
+			let entity = RULES.find(r => parseInt(r.id) == x.value)
+			return entity;
+		})
+		setCardDetails({
+			...cardDetails,
+			additionalRules: additionalRules
+		})
+	}
 	const updateSecondaryStatHandler = (result) => {
 		setCardDetails((prevState) => {
 			let temp = {
@@ -222,23 +269,30 @@ const CardCreator = (props) => {
 	}
 	const updateWeaponsHandler = (weaponUpdated) => {
 		console.log("Updated weapon")
+		// find details of rule and add to view model
+		weaponUpdated.rules.forEach(r => {
+			let rule = RULES.find(x => x.id == r.id);
+			r.name = rule.name;
+			r.description = rule.description;
+		})
 		setCardDetails((prevState) => {
+
 			let temp = {
 				...prevState,
 				weapons: [...prevState.weaponry]
 			}
-
 			Object.assign(temp.weaponry.find(x => x.id == weaponUpdated.id), weaponUpdated);
+
 			// temp.weaponry.find(x => x.id == weaponUpdated.id) = weaponUpdated;
 			return temp;
 		})
 	}
 	const deleteWeaponHandler = (id) => {
-		let itemToDelete = cardDetails.weaponry.find(x => x.id == id);
+		let itemToDelete = cardDetails.weaponry.find(x => parseInt(x.id) == parseInt(id));
 		setCardDetails((prevState) => {
 			let temp = {
-				...prevState, 
-				weaponry: prevState.weaponry.filter(x => x.id != id)
+				...prevState,
+				weaponry: prevState.weaponry.filter(x => parseInt(x.id) != parseInt(id))
 			}
 			return temp;
 		});
@@ -250,8 +304,11 @@ const CardCreator = (props) => {
 			id: parseInt(lastWeapon["id"]) + 1,
 			name: "new Weapon",
 			range: "12mm",
-			movingRof: "2",
-			haltedRof: 2
+			movingRof: 2,
+			haltedRof: 2,
+			AT: 0,
+			FP: 0,
+			rules: []
 		};
 		setCardDetails((prevState) => {
 			let temp = {
@@ -291,6 +348,7 @@ const CardCreator = (props) => {
 					onWeaponUpdate={ updateWeaponsHandler }
 					onWeaponDelete={ deleteWeaponHandler }
 					onWeaponAdd={ addWeaponHandler }
+					onAdditionalRulesChange={ updateAdditionalRulesHandler }
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>
