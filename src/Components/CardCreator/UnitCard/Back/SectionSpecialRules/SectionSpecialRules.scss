@@ -1,0 +1,50 @@
+.sectionSpecialRulesCard {
+	padding: 0.1em;
+	border-radius: 7px;
+	height: 100%;
+	margin-top: 0.3em;
+	padding-top: 0;
+	input {
+		background: none;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	.stat-label {
+		display: flex;
+		justify-content: center;
+		label {
+			font-size: 12px;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: white;
+		}
+	}
+	.stat-main {
+		display: flex;
+		justify-content: center;
+		border-radius: 4px;
+		background-color: red;
+		div {
+			text-transform: uppercase;
+			font-weight: bold;
+			color: white;
+		}
+	}
+	.stat-secondary {
+		background-color: white;
+		color: black;
+		border-radius: 4px;
+		font-size: 12px;
+	}
+	.sectionSpecialRulesCard-inner {
+		border-radius: 5px;
+		padding: 2px;
+		background-color: #ddd;
+		font-size: 14px;
+		text-align: left;
+	}
+}

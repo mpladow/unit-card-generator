@@ -164,7 +164,7 @@ const CardCreator = (props) => {
 			]
 		}
 		],
-		rules: [// rules that appear on the card
+		additionalRules: [// rules that appear on the card
 			{
 				id: 1,
 				name: "Gun",
