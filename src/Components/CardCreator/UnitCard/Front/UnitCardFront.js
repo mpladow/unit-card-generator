@@ -26,7 +26,7 @@ const UnitCardFront = (props) => {
 				currentTheme={ props.currentCard.theme }>
 			</CardTitle>
 
-			<div className='row-5'>
+			<div className='row-5 bg-light'>
 				<div className='row justify-space-between'>
 					<div className='column-25'>
 						<SectionCard
