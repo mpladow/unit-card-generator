@@ -152,9 +152,9 @@ const CardConfig = (props) => {
 		let selected = HITON.find(x => x.id === parseInt(event.target.value))
 		props.onHitOnChange({ selected: selected, statName: "Is Hit On" })
 	}
-	const unitTypeChangeHandler = (event) => {
-		let selected = UNIT_TYPES.find(x => x.name === event.target.value)
-	}
+	// const unitTypeChangeHandler = (event) => {
+	// 	let selected = UNIT_TYPES.find(x => x.name === event.target.value)
+	// }
 	const motivationSecondaryChangeHandler = (value) => {
 		console.log("secondary motivation selected", value)
 		props.onSecondaryStatChange({ "stat": "motivation", value: value });

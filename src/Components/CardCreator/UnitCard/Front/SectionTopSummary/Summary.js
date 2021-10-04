@@ -6,7 +6,7 @@ const Summary = (props) => {
 		return <span> | { r.name } | </span>
 	});
 
-	return <div className='main'>
+	return <div className='section-top'>
 		{ rules }
 	</div>
 }
