@@ -2,7 +2,10 @@ import react from 'react';
 import './CardConfig.scss';
 import ConfigDynamicList from './ConfigDynamicList';
 import ConfigSelect from './ConfigSelect';
-import Select from 'react-select';
+import Select, { mergeStyles } from 'react-select';
+
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 const CardConfig = (props) => {
 
@@ -208,6 +211,16 @@ const CardConfig = (props) => {
 		props.onAdditionalRulesChange(value);
 
 	}
+	const convertCardFronthandler = () => {
+		let element = document.getElementById('card-front');
+
+		htmlToImage.toPng(element)
+		.then((dataUrl) => {
+			let img = new Image();
+			img.src = dataUrl;
+			document.body.appendChild(img);
+		})
+	}
 
 
 
@@ -391,6 +404,9 @@ const CardConfig = (props) => {
 					</div>
 
 
+				</div>
+				<div>
+					<button onClick={convertCardFronthandler}>Convert Front to PNG</button>
 				</div>
 			</div>
 		</div>
