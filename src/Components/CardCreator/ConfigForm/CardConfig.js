@@ -2,8 +2,10 @@ import react from 'react';
 import './CardConfig.scss';
 import ConfigDynamicList from './ConfigDynamicList';
 import ConfigSelect from './ConfigSelect';
-import Select from 'react-select';
+import Select, { mergeStyles } from 'react-select';
 
+import GenerateCard from './GenerateCard';
+import ImageCropper from './ImageCropper';
 const CardConfig = (props) => {
 
 	// DATABASE
@@ -107,6 +109,7 @@ const CardConfig = (props) => {
 			id: 6,
 			name: "Heavy Weapon",
 			description: "Team cannot Charge into Contact",
+			displayFront: false
 		},
 		{
 			id: 7,
@@ -116,13 +119,47 @@ const CardConfig = (props) => {
 		{
 			id: 8,
 			name: "Slow Firing",
-			description: "+1 To Hit for Moving ROF .",
-		}
+			description: "+1 To Hit for Moving ROF.",
+			displayFront: false
+
+		},
+		{
+			id: 9,
+			name: "Bazooka Skirts",
+			description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
+			displayFront: false
+
+		},
+		{
+			id: 10,
+			name: "Forward Firing",
+			description: " Weapons can only hit targets fully in front of the Team.",
+			displayFront: false
+
+		},
+		{
+			id: 11,
+			name: "Gun",
+			description: "Gun teams have a worse Assault rating.",
+			displayFront: false
+		},
+		{
+			id: 12,
+			name: "Protected Ammo",
+			description: "Tanks with Protected Ammo have a better Remount rating.",
+			displayFront: false
+		},
+		{
+			id: 13,
+			name: "Stormtrooper",
+			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
+			displayFront: true
+		},
 	]
 	const currentCard = props.currentCard;
 	// GENERATE OPTIONS MENUS
 	const generateRuleMultiselect = () => {
-		let options = RULES.map(r => {
+		let options = RULES.sort((a, b) => a.name.localeCompare(b.name)).map(r => {
 			let option = {
 				value: parseInt(`${r.id}`),
 				label: `${r.name}`
@@ -130,6 +167,12 @@ const CardConfig = (props) => {
 			return option;
 		})
 		return options;
+	}
+	const textInputChangeHandler = (event) => {
+		let value = event.target.value;
+		let id = event.target.id;
+		let result = { value: value, id: id }
+		props.onTextInputChangeHandler(result);
 	}
 	const bgColourChangeHandler = (event) => {
 		let selected = THEMES.find(c => c.id === parseInt(event.target.value));
@@ -208,6 +251,9 @@ const CardConfig = (props) => {
 		props.onAdditionalRulesChange(value);
 
 	}
+	const onImageLoadedHandler =(url) => {
+		props.onImageLoadedHandler(url);
+	}
 
 
 
@@ -215,8 +261,24 @@ const CardConfig = (props) => {
 	return <div>
 		<div className='flex row'>
 			<div className=' form-container flex column'>
+				<div className='inputField vertical'>
+					<div className='label'><label>Team Name</label></div>
+					<div className='select'>
+						<div className='input'>
+							<input onChange={ textInputChangeHandler } id='teamName' value={ currentCard.teamName }></input>
+						</div>
+					</div>
+				</div>
+				<div className='inputField vertical'>
+					<div className='label'><label>Team Sub Heading</label></div>
+					<div className='select'>
+						<div className='input'>
+							<input onChange={ textInputChangeHandler } id='teamClass' type='text' value={ currentCard.teamClass }></input>
+						</div>
+					</div>
+				</div>
 				<div className='inputField horizontal'>
-					<div className='label'><label>Card Background Color</label></div>
+					<div className='label'><label>Faction</label></div>
 					<div className='select'>
 						<select value={ currentCard.theme.id } onChange={ bgColourChangeHandler }>
 							{ THEMES.map(x => <option value={ x.id }>{ x.name }</option>) }
@@ -340,7 +402,7 @@ const CardConfig = (props) => {
 
 			<div className='form-container flex column'>
 				<div className='label'><label>Movement</label></div>
-				<div className='flex row'>
+				<div className='row'>
 					<div className='flex inputField column'>
 						<div className='label'><label>Tactical</label></div>
 						<div className='input'>
@@ -384,13 +446,23 @@ const CardConfig = (props) => {
 				<div className='inputField'>
 					<button onClick={ addWeaponHandler }>Add Weapon</button>
 				</div>
-				<div className='form-container flex column'>
+				<div className='flex column'>
 					<div className='label'><label>Additional Rules</label></div>
 					<div className='input' id='additionalRules'>
-						<Select isMulti options={ generateRuleMultiselect() } onChange={onAdditionalRulesChange}></Select>
+						<Select isMulti options={ generateRuleMultiselect() } onChange={ onAdditionalRulesChange }></Select>
 					</div>
+				</div>
+				<div>
+					<div className='flex inputField column'>
 
-
+						<div className='label'><label>Unit Image</label></div>
+						<div className='input'>
+							<ImageCropper onImageLoaded={onImageLoadedHandler}></ImageCropper>
+						</div>
+					</div>
+				</div>
+				<div>
+					<GenerateCard teamName={ currentCard.teamName }>Download Card</GenerateCard>
 				</div>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ import MovementVehicleCard from './SectionMovement/MovementVehicleCard';
 import Armour from './SectionArmour/Armour';
 import Weaponry from './SectionWeaponry/Weaponry';
 import Summary from './SectionTopSummary/Summary';
+import UnitImage from './SectionImage/UnitImage';
 
 
 
@@ -17,7 +18,7 @@ const UnitCardFront = (props) => {
 	let x = 1;
 
 	return <div>
-		<Card currentTheme={ props.currentCard.theme }>
+		<Card id='card-front' currentTheme={ props.currentCard.theme }>
 			<CardTitle
 				onTeamNameChange={ props.onTeamNameChange }
 				onTeamClassChange={ props.onTeamClassChange }
@@ -26,7 +27,7 @@ const UnitCardFront = (props) => {
 				currentTheme={ props.currentCard.theme }>
 			</CardTitle>
 
-			<div className='row-5'>
+			<div className='row-5 bg-aliceblue'>
 				<div className='row justify-space-between'>
 					<div className='column-25'>
 						<SectionCard
@@ -40,6 +41,7 @@ const UnitCardFront = (props) => {
 					</div>
 					<div className='column-6'>
 						<Summary additionalRules = {props.currentCard.additionalRules}></Summary>
+						<UnitImage unitImage={props.currentCard.unitImage}></UnitImage>
 					</div>
 					<div className='column-25'>
 						<SectionCard

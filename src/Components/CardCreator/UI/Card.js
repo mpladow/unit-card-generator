@@ -9,7 +9,7 @@ const Card = (props) => {
 	const classesCard = `card theme ${props.currentTheme.bgTheme}`
 
 	return <div className='card-container'>
-		<div className={ classesCard }>
+		<div id={props.id} className={ classesCard }>
 			<div className={ classesCardInner }>{ props.children }</div>
 		</div>
 	</div>

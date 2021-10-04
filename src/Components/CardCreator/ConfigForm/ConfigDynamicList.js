@@ -55,9 +55,9 @@ const ConfigDynamicList = (props) => {
 
 	return <div>
 		<div className='label'><label>{ props.formFieldLabel }</label></div>
-		<div className='flex row'>
+		<div className='row'>
 			<input type='hidden' value={ props.weapon.id }></input>
-			<div className='flex inputField column'>
+			<div className='inputField column'>
 				<div className='label'><label>Name</label></div>
 				<div className='input'>
 					<input onChange={ valueChangeHandler } id={ idName } type='text' value={ currentWeapon.name }></input>
@@ -93,7 +93,9 @@ const ConfigDynamicList = (props) => {
 					<input onChange={ valueChangeHandler } style={ { width: '50px' } } id={ idFp } type='text' value={ currentWeapon.FP }></input>
 				</div>
 			</div>
-			<div className='flex inputField column'>
+		</div>
+		<div className='row'>
+			<div className='inputField column'>
 				<div className='label'>Notes</div>
 				<div className='input'>
 					<Select

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import DataStore from '../Data/DataStore';
 import './CardCreator.scss';
 import CardConfig from './ConfigForm/CardConfig';
 import UnitCardBack from './UnitCard/Back/UnitCardBack';
@@ -69,6 +70,7 @@ const CardCreator = (props) => {
 			id: 6,
 			name: "Heavy Weapon",
 			description: "Team cannot Charge into Contact",
+			displayFront: false
 		},
 		{
 			id: 7,
@@ -78,8 +80,42 @@ const CardCreator = (props) => {
 		{
 			id: 8,
 			name: "Slow Firing",
-			description: "+1 To Hit for Moving ROF .",
-		}
+			description: "+1 To Hit for Moving ROF.",
+			displayFront: false
+
+		},
+		{
+			id: 9,
+			name: "Bazooka Skirts",
+			description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
+			displayFront: false
+
+		},
+		{
+			id: 10,
+			name: "Forward Firing",
+			description: " Weapons can only hit targets fully in front of the Team.",
+			displayFront: false
+
+		},
+		{
+			id: 11,
+			name: "Gun",
+			description: "Gun teams have a worse Assault rating.",
+			displayFront: false
+		},
+		{
+			id: 12,
+			name: "Protected Ammo",
+			description: "Tanks with Protected Ammo have a better Remount rating.",
+			displayFront: false
+		},
+		{
+			id: 13,
+			name: "Stormtrooper",
+			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
+			displayFront: true
+		},
 	]
 	const UNIT_TYPE = [
 		{
@@ -116,6 +152,7 @@ const CardCreator = (props) => {
 			id: 1,
 			name: "tank"
 		},
+		unitImage: '',
 		stats: [
 			{
 				labelPrimary: "Motivation",
@@ -196,6 +233,9 @@ const CardCreator = (props) => {
 		]
 	})
 
+	const textInputChangeHandler = (value) => {
+		setCardDetails({ ...cardDetails, [value.id]: [value.value] })
+	}
 	const teamNameChangeHandler = (value) => {
 		setCardDetails({ ...cardDetails, teamName: value });
 	}
@@ -348,6 +388,13 @@ const CardCreator = (props) => {
 			return temp;
 		})
 	}
+	const onImageLoadedHandler = (image) => {
+		console.log(image);
+		setCardDetails({
+			...cardDetails,
+			unitImage: image
+		})
+	}
 
 
 	return (
@@ -380,6 +427,9 @@ const CardCreator = (props) => {
 					onWeaponAdd={ addWeaponHandler }
 					onAdditionalRulesChange={ updateAdditionalRulesHandler }
 					onUnitTypeChange={ updateUnitType }
+					onTextInputChangeHandler={ textInputChangeHandler }
+					onImageLoadedHandler={ onImageLoadedHandler }
+
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>

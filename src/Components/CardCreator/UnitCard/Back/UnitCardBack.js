@@ -18,7 +18,7 @@ const UnitCardBack = (props) => {
 	let y = 1;
 
 	return <div>
-		<Card currentTheme={ props.currentCard.theme }>
+		<Card id='card-back' currentTheme={ props.currentCard.theme }>
 			<CardTitle
 				onTeamNameChange={ props.onTeamNameChange }
 				onTeamClassChange={ props.onTeamClassChange }

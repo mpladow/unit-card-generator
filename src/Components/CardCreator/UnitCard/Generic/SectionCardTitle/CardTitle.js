@@ -20,14 +20,16 @@ const CardTitle = (props) => {
 		<div className='cardTitleIcon'><div className={ classIcon }></div></div>
 		<div className='team-name'>
 			<div className={ classTeamName }>
-				<input
-					onChange={ teamNameChangeHandler }
-					value={ props.teamName }
+				<span
 					className={ props.currentTheme.textColor }>
-				</input>
+					{ props.teamName }
+				</span>
 			</div>
 			<div className={ classTeamClassification } >
-				<input onChange={ teamClassChangeHandler } className={ props.currentTheme.textColor } value={ props.teamClass }></input>
+				<span className={ props.currentTheme.textColor } >
+					{ props.teamClass }
+
+				</span>
 			</div>
 		</div>
 		<div className='cardTitleIcon'><div className={ classIcon }></div></div>
