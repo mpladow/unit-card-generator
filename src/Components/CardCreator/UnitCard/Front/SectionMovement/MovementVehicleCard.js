@@ -50,7 +50,7 @@ const MovementVehicleCard = (props) => {
 					</div>
 					<div className='column-2'>
 						<div className="movement-value movement-value-last">
-							{ vehicleMovement.cross }
+							{ vehicleMovement.cross.toUpperCase() }
 						</div>
 					</div>
 				</div>
