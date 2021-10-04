@@ -4,9 +4,8 @@ import ConfigDynamicList from './ConfigDynamicList';
 import ConfigSelect from './ConfigSelect';
 import Select, { mergeStyles } from 'react-select';
 
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import download from 'downloadjs';
+import GenerateCard from './GenerateCard';
+import ImageCropper from './ImageCropper';
 const CardConfig = (props) => {
 
 	// DATABASE
@@ -110,6 +109,7 @@ const CardConfig = (props) => {
 			id: 6,
 			name: "Heavy Weapon",
 			description: "Team cannot Charge into Contact",
+			displayFront: false
 		},
 		{
 			id: 7,
@@ -119,13 +119,47 @@ const CardConfig = (props) => {
 		{
 			id: 8,
 			name: "Slow Firing",
-			description: "+1 To Hit for Moving ROF .",
-		}
+			description: "+1 To Hit for Moving ROF.",
+			displayFront: false
+
+		},
+		{
+			id: 9,
+			name: "Bazooka Skirts",
+			description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
+			displayFront: false
+
+		},
+		{
+			id: 10,
+			name: "Forward Firing",
+			description: " Weapons can only hit targets fully in front of the Team.",
+			displayFront: false
+
+		},
+		{
+			id: 11,
+			name: "Gun",
+			description: "Gun teams have a worse Assault rating.",
+			displayFront: false
+		},
+		{
+			id: 12,
+			name: "Protected Ammo",
+			description: "Tanks with Protected Ammo have a better Remount rating.",
+			displayFront: false
+		},
+		{
+			id: 13,
+			name: "Stormtrooper",
+			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
+			displayFront: true
+		},
 	]
 	const currentCard = props.currentCard;
 	// GENERATE OPTIONS MENUS
 	const generateRuleMultiselect = () => {
-		let options = RULES.map(r => {
+		let options = RULES.sort((a, b) => a.name.localeCompare(b.name)).map(r => {
 			let option = {
 				value: parseInt(`${r.id}`),
 				label: `${r.name}`
@@ -133,6 +167,12 @@ const CardConfig = (props) => {
 			return option;
 		})
 		return options;
+	}
+	const textInputChangeHandler = (event) => {
+		let value = event.target.value;
+		let id = event.target.id;
+		let result = { value: value, id: id }
+		props.onTextInputChangeHandler(result);
 	}
 	const bgColourChangeHandler = (event) => {
 		let selected = THEMES.find(c => c.id === parseInt(event.target.value));
@@ -211,24 +251,8 @@ const CardConfig = (props) => {
 		props.onAdditionalRulesChange(value);
 
 	}
-	const convertCardFronthandler = () => {
-		let elementFront = document.getElementById('card-front');
-		let elementBack = document.getElementById('card-back');
-		let cardTitleFront = `cardBack_${props.currentCard.teamName.trim()}`;
-		let cardTitleBack = `cardBack_${props.currentCard.teamName.trim()}`;
-
-		htmlToImage.toPng(elementFront)
-			.then((dataUrl) => {
-				// let img = new Image();
-				// img.src = dataUrl;
-				// document.body.appendChild(img);
-				download(dataUrl, `${props.currentCard.name}_card_front`)
-			});
-		htmlToImage.toPng(elementBack)
-			.then((dataUrl) => {
-				download(dataUrl, `${props.currentCard.name}_card_back`)
-			})
-
+	const onImageLoadedHandler =(url) => {
+		props.onImageLoadedHandler(url);
 	}
 
 
@@ -237,28 +261,44 @@ const CardConfig = (props) => {
 	return <div>
 		<div className='flex row'>
 			<div className=' form-container flex column'>
-				<div className='inputField horizontal'>
-					<div className='label'><label>Card Background Color</label></div>
+				<div className='inputField vertical'>
+					<div className='label'><label>Team Name</label></div>
 					<div className='select'>
-						<select value={currentCard.theme.id} onChange={bgColourChangeHandler}>
-							{THEMES.map(x => <option value={x.id}>{x.name}</option>)}
+						<div className='input'>
+							<input onChange={ textInputChangeHandler } id='teamName' value={ currentCard.teamName }></input>
+						</div>
+					</div>
+				</div>
+				<div className='inputField vertical'>
+					<div className='label'><label>Team Sub Heading</label></div>
+					<div className='select'>
+						<div className='input'>
+							<input onChange={ textInputChangeHandler } id='teamClass' type='text' value={ currentCard.teamClass }></input>
+						</div>
+					</div>
+				</div>
+				<div className='inputField horizontal'>
+					<div className='label'><label>Faction</label></div>
+					<div className='select'>
+						<select value={ currentCard.theme.id } onChange={ bgColourChangeHandler }>
+							{ THEMES.map(x => <option value={ x.id }>{ x.name }</option>) }
 						</select>
 					</div>
 				</div>
 				<div className='inputField horizontal'>
 					<div className='label'><label>Unit Type</label></div>
 					<div className='select'>
-						<select value={currentCard.unitType.id} onChange={unitTypeChangeHandler}>
-							{UNIT_TYPES.map(x => <option value={x.id}>{x.name}</option>)}
+						<select value={ currentCard.unitType.id } onChange={ unitTypeChangeHandler }>
+							{ UNIT_TYPES.map(x => <option value={ x.id }>{ x.name }</option>) }
 						</select>
 					</div>
 				</div>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Motivation</label></div>
 					<div className='select'>
-						<select value={currentCard.stats.find(x => x.labelPrimary === "Motivation").statDetail.id} onChange={motivationChangeHandler}>
+						<select value={ currentCard.stats.find(x => x.labelPrimary === "Motivation").statDetail.id } onChange={ motivationChangeHandler }>
 							<option value=''>Select a motivation value</option>
-							{MOTIVATION.map((m => <option value={m.id}>{m.name}</option>))}
+							{ MOTIVATION.map((m => <option value={ m.id }>{ m.name }</option>)) }
 						</select>
 					</div>
 					<div className='label-secondary'><label>Secondary</label></div>
@@ -266,29 +306,29 @@ const CardConfig = (props) => {
 						<ConfigSelect
 							id='1'
 							statName='motivation'
-							onSelectChange={motivationSecondaryChangeHandler}
-							options={MOTIVATION_SECONDARY}>
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
 						</ConfigSelect>
 						<ConfigSelect
 							id='2'
 							statName='motivation'
-							onSelectChange={motivationSecondaryChangeHandler}
-							options={MOTIVATION_SECONDARY}>
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
 						</ConfigSelect>
 						<ConfigSelect
 							id='3'
 							statName='motivation'
-							onSelectChange={motivationSecondaryChangeHandler}
-							options={MOTIVATION_SECONDARY}>
+							onSelectChange={ motivationSecondaryChangeHandler }
+							options={ MOTIVATION_SECONDARY }>
 						</ConfigSelect>
 					</div>
 				</div>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Skill</label></div>
 					<div className='select'>
-						<select value={currentCard.stats.find(x => x.labelPrimary === "Skill").statDetail.id} onChange={skillChangeHandler}>
+						<select value={ currentCard.stats.find(x => x.labelPrimary === "Skill").statDetail.id } onChange={ skillChangeHandler }>
 							<option>Select a skill value</option>
-							{SKILL.map((m => <option value={m.id}>{m.name}</option>))}
+							{ SKILL.map((m => <option value={ m.id }>{ m.name }</option>)) }
 						</select>
 					</div>
 					<div className='label-secondary'><label>Secondary</label></div>
@@ -296,28 +336,28 @@ const CardConfig = (props) => {
 						<ConfigSelect
 							id='1'
 							statName='skill'
-							onSelectChange={skillSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>						<ConfigSelect
 							id='2'
 							statName='skill'
-							onSelectChange={skillSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 						<ConfigSelect
 							id='3'
 							statName='skill'
-							onSelectChange={skillSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 					</div>
 				</div>
 				<div className='flex inputField vertical'>
 					<div className='label'><label>Is Hit On</label></div>
 					<div className='select'>
-						<select value={currentCard.stats.find(x => x.labelPrimary === "Is Hit On").statDetail.id} onChange={hitOnChangeHandler}>
+						<select value={ currentCard.stats.find(x => x.labelPrimary === "Is Hit On").statDetail.id } onChange={ hitOnChangeHandler }>
 							<option>Select a skill value</option>
-							{HITON.map((m => <option value={m.id}>{m.name}</option>))}
+							{ HITON.map((m => <option value={ m.id }>{ m.name }</option>)) }
 						</select>
 					</div>
 					<div className='label-secondary'><label>Secondary</label></div>
@@ -325,19 +365,19 @@ const CardConfig = (props) => {
 						<ConfigSelect
 							id='1'
 							statName='hiton'
-							onSelectChange={skillHitOnSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillHitOnSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>						<ConfigSelect
 							id='2'
 							statName='hiton'
-							onSelectChange={skillHitOnSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillHitOnSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 						<ConfigSelect
 							id='3'
 							statName='hiton'
-							onSelectChange={skillHitOnSecondaryChangeHandler}
-							options={SKILL_SECONDARY}>
+							onSelectChange={ skillHitOnSecondaryChangeHandler }
+							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
 					</div>
 				</div>
@@ -345,15 +385,15 @@ const CardConfig = (props) => {
 					<div className='label'><label>Armour</label></div>
 					<div className='label'><label>Front</label></div>
 					<div className='input'>
-						<input onChange={armourChangeHandler} id='armourFront' type='number'></input>
+						<input onChange={ armourChangeHandler } id='armourFront' type='number'></input>
 					</div>
 					<div className='label'><label>Side & Rear</label></div>
 					<div className='input'>
-						<input onChange={armourChangeHandler} id='armourSide' type='number'></input>
+						<input onChange={ armourChangeHandler } id='armourSide' type='number'></input>
 					</div>
 					<div className='label'><label>Top</label></div>
 					<div className='input'>
-						<input onChange={armourChangeHandler} id='armourTop' type='number'></input>
+						<input onChange={ armourChangeHandler } id='armourTop' type='number'></input>
 					</div>
 				</div>
 
@@ -362,60 +402,67 @@ const CardConfig = (props) => {
 
 			<div className='form-container flex column'>
 				<div className='label'><label>Movement</label></div>
-				<div className='flex row'>
+				<div className='row'>
 					<div className='flex inputField column'>
 						<div className='label'><label>Tactical</label></div>
 						<div className='input'>
-							<input className='numeric' onChange={movementChangeHandler} id='tactical' type='text'></input>
+							<input className='numeric' onChange={ movementChangeHandler } id='tactical' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
 						<div className='label'><label>Terrain Dash</label></div>
 						<div className='input'>
-							<input className='numeric' onChange={movementChangeHandler} id='terrain' type='text'></input>
+							<input className='numeric' onChange={ movementChangeHandler } id='terrain' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
 						<div className='label'><label>Cross Country</label></div>
 						<div className='input'>
-							<input className='numeric' onChange={movementChangeHandler} id='crossCountry' type='text'></input>
+							<input className='numeric' onChange={ movementChangeHandler } id='crossCountry' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
 						<div className='label'><label>Road Dash</label></div>
 						<div className='input'>
-							<input className='numeric' onChange={movementChangeHandler} id='road' type='text'></input>
+							<input className='numeric' onChange={ movementChangeHandler } id='road' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
 
 						<div className='label'><label>Cross</label></div>
 						<div className='input'>
-							<input className='numeric' onChange={movementChangeHandler} id='cross' type='text'></input>
+							<input className='numeric' onChange={ movementChangeHandler } id='cross' type='text'></input>
 						</div>
 					</div>
 				</div>
 
-				{currentCard.weaponry.map(x => <ConfigDynamicList
+				{ currentCard.weaponry.map(x => <ConfigDynamicList
 					fieldName="Weapons"
-					weapon={x}
-					onWeaponUpdate={updateWeaponsHanlder}
-					onWeaponDelete={deleteWeaponHandler}
-					rules={generateRuleMultiselect()}>
-				</ConfigDynamicList>)}
+					weapon={ x }
+					onWeaponUpdate={ updateWeaponsHanlder }
+					onWeaponDelete={ deleteWeaponHandler }
+					rules={ generateRuleMultiselect() }>
+				</ConfigDynamicList>) }
 				<div className='inputField'>
-					<button onClick={addWeaponHandler}>Add Weapon</button>
+					<button onClick={ addWeaponHandler }>Add Weapon</button>
 				</div>
-				<div className='form-container flex column'>
+				<div className='flex column'>
 					<div className='label'><label>Additional Rules</label></div>
 					<div className='input' id='additionalRules'>
-						<Select isMulti options={generateRuleMultiselect()} onChange={onAdditionalRulesChange}></Select>
+						<Select isMulti options={ generateRuleMultiselect() } onChange={ onAdditionalRulesChange }></Select>
 					</div>
-
-
 				</div>
 				<div>
-					<button onClick={convertCardFronthandler}>Convert Front to PNG</button>
+					<div className='flex inputField column'>
+
+						<div className='label'><label>Unit Image</label></div>
+						<div className='input'>
+							<ImageCropper onImageLoaded={onImageLoadedHandler}></ImageCropper>
+						</div>
+					</div>
+				</div>
+				<div>
+					<GenerateCard teamName={ currentCard.teamName }>Download Card</GenerateCard>
 				</div>
 			</div>
 		</div>
