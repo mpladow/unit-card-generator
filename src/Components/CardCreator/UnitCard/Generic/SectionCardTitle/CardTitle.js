@@ -4,6 +4,7 @@ import '../../../../../scss/Themes.scss'
 
 const CardTitle = (props) => {
 
+	let unitType = props.unitType.id;
 	let classTeamName = `tankTeamName`;
 	let classTeamClassification = `tankTeamClassification`;
 	let classSection = `cardTitle section ${props.currentTheme.sectionColorMain}`
@@ -19,18 +20,39 @@ const CardTitle = (props) => {
 	return <div className={ classSection }>
 		<div className='cardTitleIcon'><div className={ classIcon }></div></div>
 		<div className='team-name'>
-			<div className={ classTeamName }>
-				<span
-					className={ props.currentTheme.textColor }>
-					{ props.teamName }
-				</span>
-			</div>
-			<div className={ classTeamClassification } >
-				<span className={ props.currentTheme.textColor } >
-					{ props.teamClass }
+			{ unitType == 1 && (
+				<div>
+					<div className={ classTeamName }>
+						<span
+							className={ props.currentTheme.textColor }>
+							{ props.teamName }
+						</span>
+					</div>
+					<div className={ classTeamClassification } >
+						<span className={ props.currentTheme.textColor } >
+							{ props.teamClass }
 
-				</span>
-			</div>
+						</span>
+					</div>
+				</div>
+			) }
+			{ unitType != 1 && (
+				<div>
+					<div className={ classTeamClassification } >
+						<span className={ props.currentTheme.textColor } >
+							{ props.teamClass }
+
+						</span>
+					</div>
+					<div className={ classTeamName }>
+						<span
+							className={ props.currentTheme.textColor }>
+							{ props.teamName }
+						</span>
+					</div>
+				</div>
+			) }
+
 		</div>
 		<div className='cardTitleIcon'><div className={ classIcon }></div></div>
 	</div>

@@ -25,6 +25,7 @@ const UnitCardFront = (props) => {
 				onTeamClassChange={ props.onTeamClassChange }
 				teamName={ props.currentCard.teamName }
 				teamClass={ props.currentCard.teamClass }
+				unitType = {props.currentCard.unitType}
 				currentTheme={ props.currentCard.theme }>
 			</CardTitle>
 

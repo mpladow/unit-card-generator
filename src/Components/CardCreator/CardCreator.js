@@ -224,7 +224,8 @@ const CardCreator = (props) => {
 			movingType: null,// salvo or arty
 			AT: 12,
 			FP: "5+",
-			artillery: false,
+			artillery: true,
+			salvo: false,
 			main: true,
 			rules: [
 				{
