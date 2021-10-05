@@ -15,11 +15,23 @@ const CardConfig = (props) => {
 		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' }
 	]
 	const UNIT_TYPES = [
-		{ id: 1, name: "Tank", value: "Tank" },
 		{
-			id: 1, name: "Gun", value: "Gun"
+			id: 1,
+			name: "tank"
 		},
-		{ id: 1, name: "Infantry", value: "Infantry" },
+		{
+			id: 2,
+			name: "infantry"
+		},
+		{
+			id: 3,
+			name: "gun"
+		},
+		{
+			id: 4,
+			name: "plane"
+		},
+
 	]
 
 	const MOTIVATION = [{ id: 1, name: "Reluctant 5+", value: "Reluctant 5+" },
@@ -34,8 +46,9 @@ const CardConfig = (props) => {
 	];
 	const SKILL = [
 		{ id: 1, name: "Conscript 5+", value: "Conscript 5+" },
-		{ id: 2, name: "Trained 4+", value: "Trained 4+" },
-		{ id: 3, name: "Veteran 3+", value: "Veteran 3+" }
+		{ id: 2, name: "Green 5+", value: "Green 5+" },
+		{ id: 3, name: "Trained 4+", value: "Trained 4+" },
+		{ id: 4, name: "Veteran 3+", value: "Veteran 3+" },
 	];
 	const SKILL_SECONDARY = [
 		{ id: 1, name: "Tactics", label: "Tactics" },
@@ -184,7 +197,7 @@ const CardConfig = (props) => {
 
 	}
 	const unitTypeChangeHandler = (event) => {
-		let value = event.target.value;
+		let value = parseInt(event.target.value);
 		props.onUnitTypeChange(value)
 	}
 	const skillChangeHandler = (event) => {
@@ -217,6 +230,10 @@ const CardConfig = (props) => {
 
 		let armourValue = { armourFront, armourTop, armourSide };
 		props.onArmourChange(armourValue);
+	}
+	const saveChangeHandler = (event) => {
+		let value = event.target.value;
+		props.onSaveChange(value);
 	}
 	const movementChangeHandler = (result) => {
 		let tactical = document.getElementById('tactical').value;
@@ -381,22 +398,33 @@ const CardConfig = (props) => {
 						</ConfigSelect>
 					</div>
 				</div>
-				<div className='flex inputField vertical'>
-					<div className='label'><label>Armour</label></div>
-					<div className='label'><label>Front</label></div>
-					<div className='input'>
-						<input onChange={ armourChangeHandler } id='armourFront' type='number'></input>
+				{currentCard.unitType.id == 1 && (
+					<div className='flex inputField vertical'>
+						<div className='label'><label>Armour</label></div>
+						<div className='label'><label>Front</label></div>
+						<div className='input'>
+							<input onChange={ armourChangeHandler } id='armourFront' type='number' value={currentCard.armour.front}></input>
+						</div>
+						<div className='label'><label>Side & Rear</label></div>
+						<div className='input'>
+							<input onChange={ armourChangeHandler } id='armourSide' type='number' value={ currentCard.armour.side}></input>
+						</div>
+						<div className='label'><label>Top</label></div>
+						<div className='input'>
+							<input onChange={ armourChangeHandler } id='armourTop' type='number' value={ currentCard.armour.top }></input>
+						</div>
 					</div>
-					<div className='label'><label>Side & Rear</label></div>
-					<div className='input'>
-						<input onChange={ armourChangeHandler } id='armourSide' type='number'></input>
+				)}
+				{currentCard.unitType.id == 2 && (
+					<div className='flex inputField vertical'>
+						<div className='label'><label>Save</label></div>
+						<div className='input'>
+							<input onChange={ saveChangeHandler } id='save' type='text' value={ currentCard.save}></input>
+						</div>
+						
 					</div>
-					<div className='label'><label>Top</label></div>
-					<div className='input'>
-						<input onChange={ armourChangeHandler } id='armourTop' type='number'></input>
-					</div>
-				</div>
-
+				)}
+			
 			</div>
 
 

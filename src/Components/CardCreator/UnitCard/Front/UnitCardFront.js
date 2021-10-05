@@ -9,6 +9,7 @@ import Armour from './SectionArmour/Armour';
 import Weaponry from './SectionWeaponry/Weaponry';
 import Summary from './SectionTopSummary/Summary';
 import UnitImage from './SectionImage/UnitImage';
+import UnitSave from './SectionSave/UnitSave';
 
 
 
@@ -40,18 +41,26 @@ const UnitCardFront = (props) => {
 						</SectionCard>
 					</div>
 					<div className='column-6'>
-						<Summary additionalRules = {props.currentCard.additionalRules}></Summary>
-						<UnitImage unitImage={props.currentCard.unitImage}></UnitImage>
+						<Summary additionalRules={ props.currentCard.additionalRules }></Summary>
+						<UnitImage unitImage={ props.currentCard.unitImage }></UnitImage>
 					</div>
 					<div className='column-25'>
 						<SectionCard
 							currentTheme={ props.currentCard.theme }
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Is Hit On") }>
 						</SectionCard>
-						<Armour
-							currentTheme={ props.currentCard.theme }
-							armour={ props.currentCard.armour }>
-						</Armour>
+						{ props.currentCard.unitType.id == 1 && (
+							<Armour
+								currentTheme={ props.currentCard.theme }
+								armour={ props.currentCard.armour }>
+							</Armour>
+						) }
+						{ props.currentCard.unitType.id == 2 && (
+							<UnitSave
+								currentTheme={ props.currentCard.theme }
+								currentCard={ props.currentCard }>
+							</UnitSave>
+						) }
 					</div>
 				</div>
 			</div>
