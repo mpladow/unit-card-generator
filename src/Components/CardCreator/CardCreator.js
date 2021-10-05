@@ -29,8 +29,9 @@ const CardCreator = (props) => {
 	];
 	const SKILL = [
 		{ id: 1, name: "Conscript 5+", value: "Conscript 5+" },
-		{ id: 2, name: "Trained 4+", value: "Trained 4+" },
-		{ id: 3, name: "Veteran 3+", value: "Veteran 3+" }
+		{ id: 2, name: "Green 5+", value: "Green 5+" },
+		{ id: 3, name: "Trained 4+", value: "Trained 4+" },
+		{ id: 4, name: "Veteran 3+", value: "Veteran 3+" },
 	];
 	const SKILL_SECONDARY = [
 		{ id: 1, name: "Tactics", label: "Tactics" },
@@ -114,6 +115,24 @@ const CardCreator = (props) => {
 			id: 13,
 			name: "Stormtrooper",
 			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
+			displayFront: true
+		},
+		{
+			id: 14,
+			name: "Limited 1",
+			description: "Each time this Unit shoots, one of its Teams may shoot with this weapon.",
+			displayFront: true
+		},
+		{
+			id: 15,
+			name: "Limited 2",
+			description: "Each time this Unit shoots, two of its Teams may shoot with this weapon.",
+			displayFront: true
+		},
+		{
+			id: 16,
+			name: "Pinned ROF 1",
+			description: "Each time this Unit shoots, one of its Teams my shoot as a Panzerfaust rather than its usual weapons.",
 			displayFront: true
 		},
 	]
@@ -264,6 +283,12 @@ const CardCreator = (props) => {
 				"side": result.armourSide,
 				"top": result.armourTop
 			}
+		})
+	}
+	const onSaveChangeHandler = (value) => {
+		setCardDetails({
+			...cardDetails,
+			save: value
 		})
 	}
 	const setVehicleMovement = (result) => {
@@ -429,7 +454,7 @@ const CardCreator = (props) => {
 					onUnitTypeChange={ updateUnitType }
 					onTextInputChangeHandler={ textInputChangeHandler }
 					onImageLoadedHandler={ onImageLoadedHandler }
-
+					onSaveChange={ onSaveChangeHandler }
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>

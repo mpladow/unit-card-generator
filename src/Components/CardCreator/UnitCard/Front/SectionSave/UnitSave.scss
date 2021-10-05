@@ -1,4 +1,4 @@
-.sectionCard {
+.saveCard {
 	padding: 0.1em;
 	border-radius: 7px;
 	height: 100%;
@@ -13,7 +13,7 @@
 		width: 100%;
 	}
 
-	.stat-label {
+	.save-label {
 		display: flex;
 		justify-content: center;
 		label {
@@ -23,28 +23,42 @@
 			color: white;
 		}
 	}
-	.stat-main {
+	.save-main {
 		display: flex;
 		justify-content: center;
 		border-radius: 4px;
-		background-color: red;
+
 		div {
 			text-transform: uppercase;
 			font-weight: bold;
 			color: white;
+			padding: 4px;
+		}
+		.part {
+			font-size: 13px;
+			width: 80%;
+			display: flex;
+			justify-content: space-between;
+			text-align: left;
+			line-height: 14px;
+			align-items: center;
+			border-radius: 4px;
+			margin-bottom: 2px;
+		}
+		.value {
+			font-size: 20px;
+			width: 20%;
+			font-weight: bold;
+			color: black;
+			margin-top: -2px;
 		}
 	}
-	.stat-secondary {
+	.save-secondary {
 		background-color: white;
-		color: black;
-		border-radius: 4px;
-		font-size: 12px;
-		
 	}
-	.sectionCard-inner {
+	.saveCard-inner {
 		border-radius: 5px;
-		padding: 2px;
-		background-color: #ddd;
-
+		padding: 2px 2px 0 2px;
+		background-color: white;
 	}
 }
