@@ -55,7 +55,13 @@ const UnitCardFront = (props) => {
 								armour={ props.currentCard.armour }>
 							</Armour>
 						) }
-						{ props.currentCard.unitType.id == 2 && (
+						{ (props.currentCard.unitType.id == 2) &&(
+							<UnitSave
+								currentTheme={ props.currentCard.theme }
+								currentCard={ props.currentCard }>
+							</UnitSave>
+						) }
+						{ (props.currentCard.unitType.id == 3) && (
 							<UnitSave
 								currentTheme={ props.currentCard.theme }
 								currentCard={ props.currentCard }>
