@@ -10,7 +10,7 @@ const GenerateCard = (props) => {
 		let cardTitleBack = `cardBack_${props.teamName}`;
 
 
-		htmlToImage.toPng(elementFront)
+		htmlToImage.toPng(elementFront,{quality: 1} )
 			.then((dataUrl) => {
 				// let img = new Image();
 				// img.src = dataUrl;
