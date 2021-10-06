@@ -2,14 +2,14 @@
 	display: flex;
 	align-items: flex-start;
 	.inputField {
-		margin: 1em 0;
+		margin: 4px 0;
 		display: flex;
 		.numeric{
 			width: 50px;
 		}
 		.label {
 			text-align: left;
-			padding: 0.25em;
+			padding: 4px;
 		}
 		.label-secondary {
 			padding: 0.25em;
@@ -37,5 +37,5 @@
 	}
 }
 .form-container {
-	padding: 2em;
+	padding: 14px;
 }
