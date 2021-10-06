@@ -24,7 +24,8 @@ const UnitCardBack = (props) => {
 				onTeamClassChange={ props.onTeamClassChange }
 				teamName={ props.currentCard.teamName }
 				teamClass={ props.currentCard.teamClass }
-				currentTheme={ props.currentCard.theme }>
+				currentTheme={ props.currentCard.theme }
+				unitType={props.currentCard.unitType}>
 			</CardTitle>
 			<div className='row-5'>
 				<div className='row justify-space-between'>

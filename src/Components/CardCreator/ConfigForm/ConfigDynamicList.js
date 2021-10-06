@@ -7,13 +7,17 @@ const ConfigDynamicList = (props) => {
 
 	let [currentWeapon, updateCurrentWeapon] = useState(props.weapon);
 
-
+	let salvoChecked = currentWeapon.salvo == true ? 'checked' : ''
+	let artilleryChecked = currentWeapon.artillery == true ? 'checked' : ''
 	const valueChangeHandler = (event) => {
 		console.log(event);
 
 		let id = event.currentTarget.id;
 		let stat = id.substring(0, id.indexOf('_'));
 		let updatedValue = event.currentTarget.value;
+		if (event.currentTarget.type == "checkbox") {
+			updatedValue = event.currentTarget.checked ? true : false;
+		}
 
 		let temp = {
 			...currentWeapon,
@@ -51,7 +55,10 @@ const ConfigDynamicList = (props) => {
 	let idHaltedRof = `haltedRof_${id}`;
 	let idAt = `AT_${id}`;
 	let idFp = `FP_${id}`;
-	let idRules = `rules_${id}`
+	let idRules = `rules_${id}`;
+	let idSalvo = `salvo_${id}`;
+	let idArtillery = `artillery_${id}`;
+
 
 	return <div>
 		<div className='label'><label>{ props.formFieldLabel }</label></div>
@@ -91,6 +98,18 @@ const ConfigDynamicList = (props) => {
 				<div className='label'><label>Fire Power</label></div>
 				<div className='input'>
 					<input onChange={ valueChangeHandler } style={ { width: '50px' } } id={ idFp } type='text' value={ currentWeapon.FP }></input>
+				</div>
+			</div>
+			<div className='flex inputField column'>
+				<div className='label'><label>Salvo</label></div>
+				<div className='input'>
+					<input onChange={ valueChangeHandler } style={ { width: '50px' } } id={ idSalvo } type='checkbox' checked={ currentWeapon.salvo } value='salvo'></input>
+				</div>
+			</div>
+			<div className='flex inputField column'>
+				<div className='label'><label>Artillery</label></div>
+				<div className='input'>
+					<input onChange={ valueChangeHandler } style={ { width: '50px' } } id={ idArtillery } type='checkbox' checked={currentWeapon.artillery } value='artillery'></input>
 				</div>
 			</div>
 		</div>

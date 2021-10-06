@@ -7,7 +7,7 @@ const ImageCropper = (props) => {
 	let [cropped, setCropped] = useState('');
 	let [crop, setCrop] = useState({
 		unit: 'px', // default, can be 'px' or '%'
-
+		locked: true,
 		width: 322,
 		height: 222
 	});
@@ -28,7 +28,8 @@ const ImageCropper = (props) => {
 	}
 
 	const onCropChange = (onCropChange) => {
-		setCrop(onCropChange)
+		setCrop({...crop, 
+			x: onCropChange.x, y: onCropChange.y})
 	}
 	const onCropComplete = (crop) => {
 		makeClientCrop(crop).then(x => {
@@ -98,16 +99,17 @@ const ImageCropper = (props) => {
 
 	}
 	return <div>
-		<input className='' onChange={ imageChangeHandler } id='unitImage' type='file'></input>
+		<input className='' onChange={imageChangeHandler} id='unitImage' type='file'></input>
 		<div>
-			{ src && (
-				<ReactCrop src={ src }
-					crop={ crop }
-					onImageLoaded={ onImageLoaded }
-					onChange={ onCropChange }
-					onComplete={ onCropComplete } />
+			{src && (
+				<ReactCrop src={src}
+					crop={crop}
+					onImageLoaded={onImageLoaded}
+					onChange={onCropChange}
+					onComplete={onCropComplete}
+					style={{"max-width": "500px"}} />
 
-			) }
+			)}
 		</div>
 	</div>
 

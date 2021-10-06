@@ -275,6 +275,7 @@ const CardConfig = (props) => {
 
 
 
+
 	return <div>
 		<div className='flex row'>
 			<div className=' form-container flex column'>

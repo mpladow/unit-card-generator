@@ -4,11 +4,15 @@
 	height: 100%;
 	margin-top: 0.2em;
 	padding-top: 0;
+	.bordered {
+		border: 1.5px solid #000;
+		border-radius: 4px;
+	}
 
 	.weaponryCard-inner {
 		background-color: whitesmoke;
 		border-radius: 6px;
-		&.main{
+		&.main {
 			background-color: #ddd;
 		}
 	}
@@ -55,33 +59,35 @@
 		// color: black;
 		font-size: 14px;
 		border-left: 1.5px solid #000;
+		min-height: 19px;
 	}
-	.column-name{
+	.column-name {
 		width: 28%;
 	}
-	.column-range{
+	.column-range {
 		width: 13%;
 	}
-	.column-halted{
+	.column-halted {
 		width: 8%;
 	}
-	.column-moving{
+	.column-moving {
 		width: 8%;
 	}
-	.column-at{
+	.column-at {
 		width: 7%;
 	}
-	.column-fp{
+	.column-fp {
 		width: 7%;
 	}
-	.column-notes{
+	.column-notes {
 		width: 30%;
-		.notes{
+		.notes {
 			font-style: italic;
 			font-size: 12px;
 			text-align: left;
 			line-height: 19px;
 			padding-left: 3px;
+			min-height: 19px;
 		}
 	}
 }

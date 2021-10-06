@@ -9,7 +9,7 @@ const WeaponDetails = (props) => {
     const weaponNotes = weapon.rules != null? weapon.rules.map(x => x.name).join(", ") : '';
     return <div>
         <div className={classesCardInner} >
-            <div className='row align-center'>
+			 <div className='row align-center'>
                 <div className='column-name'>
                     <div className="weaponry-value weaponry-value-first">
                         {weapon.name}
