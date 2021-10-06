@@ -30,7 +30,7 @@ const UnitCardFront = (props) => {
 			</CardTitle>
 
 			<div className='row-5 bg-aliceblue'>
-				<div className='row justify-space-between'>
+				<div className='row height-100 justify-space-between'>
 					<div className='column-25'>
 						<SectionCard
 							currentTheme={ props.currentCard.theme }
@@ -41,7 +41,7 @@ const UnitCardFront = (props) => {
 							stat={ props.currentCard.stats.find(x => x.labelPrimary === "Skill") }>
 						</SectionCard>
 					</div>
-					<div className='column-6'>
+					<div className='column-6' style={{position: "relative"}}>
 						<Summary additionalRules={ props.currentCard.additionalRules }></Summary>
 						<UnitImage unitImage={ props.currentCard.unitImage }></UnitImage>
 					</div>
