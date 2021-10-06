@@ -2,7 +2,8 @@
 	color: black;
 	font-size: 12px;
 	position: absolute;
-    width: 100%;
-	span{
-	}
+	width: 100%;
+	z-index: 999;
+	font-weight: bold;
+	padding-top: 5px;
 }

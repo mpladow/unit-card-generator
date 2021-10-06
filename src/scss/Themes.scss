@@ -11,6 +11,9 @@
 	&.theme-german {
 		background-image: url('../images/backgrounds/BG-German.jpg');
 	}
+	&.theme-uk {
+		background-image: url('../images/backgrounds/BG-UK.jfif');
+	}
 	// &.theme-icon {
 	// }
 	&.icon-german {
@@ -21,5 +24,8 @@
 	}
 	&.icon-soviet {
 		background-image: url('../images/theme-icon/icon-Soviet.png');
+	}
+	&.icon-uk {
+		background-image: url('../images/theme-icon/icon-UK.png');
 	}
 }

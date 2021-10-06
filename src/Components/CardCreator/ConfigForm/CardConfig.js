@@ -12,7 +12,9 @@ const CardConfig = (props) => {
 	const THEMES = [
 		{ id: 1, name: 'US', bgTheme: 'theme-us', icon: 'icon-us', bgColor: 'bg-navy-blue', textColor: 'text-white', sectionColorMain: 'bg-navy-blue', cardInner: 'bg-brown-1' },
 		{ id: 2, name: 'German', bgTheme: 'theme-german', icon: 'icon-german', bgColor: 'bg-dark-grey', textColor: 'text-white', sectionColorMain: 'bg-dark-grey', cardInner: 'bg-brown-1' },
-		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' }
+		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' },
+		{ id: 4, name: 'British', bgTheme: 'theme-uk', icon: 'icon-uk', bgColor: 'bg-uk-blue', textColor: 'text-white', sectionColorMain: 'bg-uk-blue', cardInner: 'bg-lightbrown-1' }
+
 	]
 	const UNIT_TYPES = [
 		{
