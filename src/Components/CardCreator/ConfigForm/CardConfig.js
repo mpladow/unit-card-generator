@@ -12,7 +12,7 @@ const CardConfig = (props) => {
 	const THEMES = [
 		{ id: 1, name: 'US', bgTheme: 'theme-us', icon: 'icon-us', bgColor: 'bg-navy-blue', textColor: 'text-white', sectionColorMain: 'bg-navy-blue', cardInner: 'bg-brown-1' },
 		{ id: 2, name: 'German', bgTheme: 'theme-german', icon: 'icon-german', bgColor: 'bg-dark-grey', textColor: 'text-white', sectionColorMain: 'bg-dark-grey', cardInner: 'bg-brown-1' },
-		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-1' },
+		{ id: 3, name: 'Soviet', bgTheme: 'theme-soviet', icon: 'icon-soviet', bgColor: 'bg-red', textColor: 'text-white', sectionColorMain: 'bg-red', cardInner: 'bg-brown-2' },
 		{ id: 4, name: 'British', bgTheme: 'theme-uk', icon: 'icon-uk', bgColor: 'bg-uk-blue', textColor: 'text-white', sectionColorMain: 'bg-uk-blue', cardInner: 'bg-lightbrown-1' }
 
 	]
@@ -270,7 +270,7 @@ const CardConfig = (props) => {
 		props.onAdditionalRulesChange(value);
 
 	}
-	const onImageLoadedHandler =(url) => {
+	const onImageLoadedHandler = (url) => {
 		props.onImageLoadedHandler(url);
 	}
 
@@ -401,66 +401,73 @@ const CardConfig = (props) => {
 						</ConfigSelect>
 					</div>
 				</div>
-				{currentCard.unitType.id == 1 && (
+				{ currentCard.unitType.id == 1 && (
 					<div className='flex inputField vertical'>
-						<div className='label'><label>Armour</label></div>
-						<div className='label'><label>Front</label></div>
-						<div className='input'>
-							<input onChange={ armourChangeHandler } id='armourFront' type='number' value={currentCard.armour.front}></input>
-						</div>
-						<div className='label'><label>Side & Rear</label></div>
-						<div className='input'>
-							<input onChange={ armourChangeHandler } id='armourSide' type='number' value={ currentCard.armour.side}></input>
-						</div>
-						<div className='label'><label>Top</label></div>
-						<div className='input'>
-							<input onChange={ armourChangeHandler } id='armourTop' type='number' value={ currentCard.armour.top }></input>
+						<div className='label' style={{'text-align': 'left'}}><label>Armour</label></div>
+						<div className='row'>
+							<div className='flex inputField column'>
+								<div className='label-secondary'><label>Front</label></div>
+								<div className='input'>
+									<input onChange={ armourChangeHandler } id='armourFront' className="input-number" type='number' value={ currentCard.armour.front }></input>
+								</div>
+							</div>
+							<div className='flex inputField column'>
+								<div className='label-secondary'><label>Side & Rear</label></div>
+								<div className='input'>
+									<input onChange={ armourChangeHandler } id='armourSide' className="input-number" type='number' value={ currentCard.armour.side }></input>
+								</div>
+							</div>
+							<div className='flex inputField column'>
+								<div className='label-secondary'><label>Top</label></div>
+								<div className='input'>
+									<input onChange={ armourChangeHandler } id='armourTop' className="input-number" type='number' value={ currentCard.armour.top }></input>
+								</div>
+							</div>
 						</div>
 					</div>
-				)}
-				{currentCard.unitType.id == 2 && (
+				) }
+				{ currentCard.unitType.id != 1 && (
 					<div className='flex inputField vertical'>
 						<div className='label'><label>Save</label></div>
 						<div className='input'>
-							<input onChange={ saveChangeHandler } id='save' type='text' value={ currentCard.save}></input>
+							<input onChange={ saveChangeHandler } id='save' className="input-number" type='text' value={ currentCard.save }></input>
 						</div>
-						
+
 					</div>
-				)}
-			
+				) }
+
 			</div>
 
 
-			<div className='form-container flex column'>
+			<div className='form-container flex inputField column'>
 				<div className='label'><label>Movement</label></div>
 				<div className='row'>
 					<div className='flex inputField column'>
-						<div className='label'><label>Tactical</label></div>
+						<div className='label-secondary'><label>Tactical</label></div>
 						<div className='input'>
 							<input className='numeric' onChange={ movementChangeHandler } id='tactical' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
-						<div className='label'><label>Terrain Dash</label></div>
+						<div className='label-secondary'><label>Terrain Dash</label></div>
 						<div className='input'>
 							<input className='numeric' onChange={ movementChangeHandler } id='terrain' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
-						<div className='label'><label>Cross Country</label></div>
+						<div className='label-secondary'><label>Cross Country</label></div>
 						<div className='input'>
 							<input className='numeric' onChange={ movementChangeHandler } id='crossCountry' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
-						<div className='label'><label>Road Dash</label></div>
+						<div className='label-secondary'><label>Road Dash</label></div>
 						<div className='input'>
 							<input className='numeric' onChange={ movementChangeHandler } id='road' type='text'></input>
 						</div>
 					</div>
 					<div className='flex inputField column'>
-
-						<div className='label'><label>Cross</label></div>
+						<div className='label-secondary'><label>Cross</label></div>
 						<div className='input'>
 							<input className='numeric' onChange={ movementChangeHandler } id='cross' type='text'></input>
 						</div>
@@ -477,7 +484,7 @@ const CardConfig = (props) => {
 				<div className='inputField'>
 					<button onClick={ addWeaponHandler }>Add Weapon</button>
 				</div>
-				<div className='flex column'>
+				<div className='flex inputField column'>
 					<div className='label'><label>Additional Rules</label></div>
 					<div className='input' id='additionalRules'>
 						<Select isMulti options={ generateRuleMultiselect() } onChange={ onAdditionalRulesChange }></Select>
@@ -488,7 +495,7 @@ const CardConfig = (props) => {
 
 						<div className='label'><label>Unit Image</label></div>
 						<div className='input'>
-							<ImageCropper onImageLoaded={onImageLoadedHandler}></ImageCropper>
+							<ImageCropper onImageLoaded={ onImageLoadedHandler }></ImageCropper>
 						</div>
 					</div>
 				</div>

@@ -4,17 +4,20 @@
 	.inputField {
 		margin: 4px 0;
 		display: flex;
+		justify-content: flex-end;
 		.numeric{
 			width: 50px;
 		}
 		.label {
 			text-align: left;
 			padding: 4px;
+			font-weight: bold;
 		}
 		.label-secondary {
 			padding: 0.25em;
 			padding-left: .4em;
 			font-size: 0.8em;
+			font-style: italic;
 		}
 		.input {
 			padding: 0.25em;
