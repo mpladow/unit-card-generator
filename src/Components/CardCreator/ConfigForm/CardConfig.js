@@ -474,12 +474,13 @@ const CardConfig = (props) => {
 					</div>
 				</div>
 
-				{ currentCard.weaponry.map(x => <ConfigDynamicList
+				{ currentCard.weaponry.map((x, i) => <ConfigDynamicList
 					fieldName="Weapons"
 					weapon={ x }
 					onWeaponUpdate={ updateWeaponsHanlder }
 					onWeaponDelete={ deleteWeaponHandler }
-					rules={ generateRuleMultiselect() }>
+					rules={ generateRuleMultiselect()}
+					count = {currentCard.weaponry.length} >
 				</ConfigDynamicList>) }
 				<div className='inputField'>
 					<button onClick={ addWeaponHandler }>Add Weapon</button>
