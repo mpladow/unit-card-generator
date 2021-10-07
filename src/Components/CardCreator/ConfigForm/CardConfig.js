@@ -6,6 +6,9 @@ import Select, { mergeStyles } from 'react-select';
 
 import GenerateCard from './GenerateCard';
 import ImageCropper from './ImageCropper';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const CardConfig = (props) => {
 
 	// DATABASE
@@ -475,9 +478,9 @@ const CardConfig = (props) => {
 						</div>
 					</div>
 				</div>
-<div className='inputField'>
-	<div className='label'>Weapons</div>
-</div>
+				<div className='inputField'>
+					<div className='label'>Weapons</div>
+				</div>
 				{ currentCard.weaponry.map((x, i) => <ConfigDynamicList
 					fieldName="Weapons"
 					weapon={ x }
@@ -486,8 +489,8 @@ const CardConfig = (props) => {
 					rules={ generateRuleMultiselect() }
 					count={ currentCard.weaponry.length } >
 				</ConfigDynamicList>) }
-				<div className='inputField' style={{"padding":"12px 6px"}}>
-					<button className='button button-sm secondary' onClick={ addWeaponHandler }>Add Weapon</button>
+				<div className='inputField' style={ { "padding": "12px 6px" } }>
+					<button className='button button-sm secondary' onClick={ addWeaponHandler }><FontAwesomeIcon icon='plus' style={ { 'margin-right': '4px' } }></FontAwesomeIcon>Add Weapon</button>
 				</div>
 				<div className='flex inputField column width-50'>
 					<div className='label'><label>Additional Rules</label></div>
@@ -504,8 +507,8 @@ const CardConfig = (props) => {
 						</div>
 					</div>
 				</div>
-				<div className='flex center' style={{'margin-top': '12px'}}>
-					<GenerateCard teamName={ currentCard.teamName }>Download Card</GenerateCard>
+				<div className='flex center' style={ { 'margin-top': '12px' } }>
+					<GenerateCard teamName={ currentCard.teamName }><FontAwesomeIcon icon="download"></FontAwesomeIcon> Download Card</GenerateCard>
 				</div>
 			</div>
 		</div>

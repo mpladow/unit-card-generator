@@ -6,7 +6,13 @@ import CardCreator from './Components/CardCreator/CardCreator';
 import ConfigForm from './Components/CardCreator/UI/ConfigForm';
 import config from './Config/config.json';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faDownload, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
+library.add(faPlus, faDownload, faTimes)
+
+
 function App() {
+
 	const [darkMode, setDarkMode] = useState('dark-mode');
 	const [measurement, setMeasurement] = useState('imperial');
 	const darkModeChangeHandler = (value) => {
@@ -17,9 +23,9 @@ function App() {
 	}
 	let classes = `App ${darkMode == true ? 'dark-mode' : 'light-mode'}`;
 	return (
-		<div className={classes}>
+		<div className={ classes }>
 			<CardCreator></CardCreator>
-			<ConfigForm darkModeChange={darkModeChangeHandler} />
+			<ConfigForm darkModeChange={ darkModeChangeHandler } />
 		</div >
 	);
 }
