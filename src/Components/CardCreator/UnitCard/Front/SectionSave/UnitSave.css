@@ -1,0 +1,89 @@
+.saveCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 7px;
+  padding-top: 0;
+}
+
+.saveCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+}
+
+.saveCard .save-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.saveCard .save-label label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.saveCard .save-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.saveCard .save-main div {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  padding: 4px;
+}
+
+.saveCard .save-main .part {
+  font-size: 13px;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  line-height: 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.saveCard .save-main .value {
+  font-size: 20px;
+  width: 20%;
+  font-weight: bold;
+  color: black;
+  margin-top: -2px;
+}
+
+.saveCard .save-secondary {
+  background-color: white;
+}
+
+.saveCard .saveCard-inner {
+  border-radius: 5px;
+  padding: 2px 2px 0 2px;
+  background-color: white;
+}
+/*# sourceMappingURL=UnitSave.css.map */

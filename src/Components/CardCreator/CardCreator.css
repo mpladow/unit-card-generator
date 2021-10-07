@@ -1,0 +1,18 @@
+.card-creator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 3em;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.card-creator .card-interface {
+  padding: 1em;
+}
+
+.card-creator .card-form {
+  width: 70%;
+  padding: 1em;
+}
+/*# sourceMappingURL=CardCreator.css.map */

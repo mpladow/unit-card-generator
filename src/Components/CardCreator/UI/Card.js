@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../scss/Colors.scss';
+import '../../../scss/ThemeColors.scss';
 import '../../../scss/Themes.scss';
 import './Card.scss';
 // import './Card.css'

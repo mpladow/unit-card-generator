@@ -1,0 +1,65 @@
+.sectionCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 7px;
+  padding-top: 0;
+}
+
+.sectionCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.sectionCard .stat-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sectionCard .stat-label label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+}
+
+.sectionCard .stat-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.sectionCard .stat-main div {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.sectionCard .stat-secondary {
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.sectionCard .sectionCard-inner {
+  border-radius: 5px;
+  padding: 2px;
+  background-color: #ddd;
+}
+/*# sourceMappingURL=SectionCard.css.map */

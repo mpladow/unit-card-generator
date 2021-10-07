@@ -1,5 +1,5 @@
 import './SectionCardTitle.scss';
-import '../../../../../scss/Colors.scss';
+import '../../../../../scss/ThemeColors.scss';
 import '../../../../../scss/Themes.scss'
 
 const CardTitle = (props) => {

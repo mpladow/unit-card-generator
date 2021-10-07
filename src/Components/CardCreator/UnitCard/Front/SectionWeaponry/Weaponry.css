@@ -1,0 +1,156 @@
+.weaponryCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 0.2em;
+  padding-top: 0;
+  -webkit-box-shadow: 0px 0px 11px -5px #fff;
+          box-shadow: 0px 0px 11px -5px #fff;
+}
+
+.weaponryCard .bordered {
+  border: 1.5px solid #000;
+  border-radius: 4px;
+}
+
+.weaponryCard .weaponryCard-inner {
+  background-color: whitesmoke;
+  border-radius: 6px;
+}
+
+.weaponryCard .weaponryCard-inner.main {
+  background-color: #ddd;
+}
+
+.weaponryCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+}
+
+.weaponryCard .weaponry-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.weaponryCard .weaponry-label label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+}
+
+.weaponryCard .stat-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.weaponryCard .stat-main input {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.weaponryCard .weaponry-value-first {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.weaponryCard .weaponry-value-last {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.weaponryCard .weaponry-value {
+  font-size: 14px;
+  border-left: 1.5px solid #000;
+  min-height: 19px;
+}
+
+.weaponryCard .weapon-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weaponryCard .column-name {
+  width: 28%;
+}
+
+.weaponryCard .column-range {
+  width: 13%;
+}
+
+.weaponryCard .column-halted {
+  width: 8%;
+}
+
+.weaponryCard .column-moving {
+  width: 8%;
+}
+
+.weaponryCard .column-rof {
+  width: 16%;
+  text-align: center;
+}
+
+.weaponryCard .column-rof .rof-inner {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.weaponryCard .column-at {
+  width: 7%;
+}
+
+.weaponryCard .column-fp {
+  width: 7%;
+}
+
+.weaponryCard .column-barrage {
+  width: 16%;
+}
+
+.weaponryCard .column-notes {
+  width: 30%;
+}
+
+.weaponryCard .column-notes .notes {
+  font-style: italic;
+  font-size: 12px;
+  text-align: left;
+  line-height: 19px;
+  padding-left: 3px;
+  min-height: 19px;
+}
+/*# sourceMappingURL=Weaponry.css.map */

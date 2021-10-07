@@ -403,7 +403,7 @@ const CardConfig = (props) => {
 				</div>
 				{ currentCard.unitType.id == 1 && (
 					<div className='flex inputField vertical'>
-						<div className='label' style={{'text-align': 'left'}}><label>Armour</label></div>
+						<div className='label' style={ { 'text-align': 'left' } }><label>Armour</label></div>
 						<div className='row'>
 							<div className='flex inputField column'>
 								<div className='label-secondary'><label>Front</label></div>
@@ -440,7 +440,9 @@ const CardConfig = (props) => {
 
 
 			<div className='form-container flex inputField column'>
-				<div className='label'><label>Movement</label></div>
+				<div className='inputField'>
+					<div className='label'><label>Movement</label></div>
+				</div>
 				<div className='row'>
 					<div className='flex inputField column'>
 						<div className='label-secondary'><label>Tactical</label></div>
@@ -473,21 +475,23 @@ const CardConfig = (props) => {
 						</div>
 					</div>
 				</div>
-
+<div className='inputField'>
+	<div className='label'>Weapons</div>
+</div>
 				{ currentCard.weaponry.map((x, i) => <ConfigDynamicList
 					fieldName="Weapons"
 					weapon={ x }
 					onWeaponUpdate={ updateWeaponsHanlder }
 					onWeaponDelete={ deleteWeaponHandler }
-					rules={ generateRuleMultiselect()}
-					count = {currentCard.weaponry.length} >
+					rules={ generateRuleMultiselect() }
+					count={ currentCard.weaponry.length } >
 				</ConfigDynamicList>) }
-				<div className='inputField'>
-					<button onClick={ addWeaponHandler }>Add Weapon</button>
+				<div className='inputField' style={{"padding":"12px 6px"}}>
+					<button className='button button-sm secondary' onClick={ addWeaponHandler }>Add Weapon</button>
 				</div>
-				<div className='flex inputField column'>
+				<div className='flex inputField column width-50'>
 					<div className='label'><label>Additional Rules</label></div>
-					<div className='input' id='additionalRules'>
+					<div className='input width-100' id='additionalRules'>
 						<Select isMulti options={ generateRuleMultiselect() } onChange={ onAdditionalRulesChange }></Select>
 					</div>
 				</div>
@@ -500,7 +504,7 @@ const CardConfig = (props) => {
 						</div>
 					</div>
 				</div>
-				<div>
+				<div className='flex center' style={{'margin-top': '12px'}}>
 					<GenerateCard teamName={ currentCard.teamName }>Download Card</GenerateCard>
 				</div>
 			</div>

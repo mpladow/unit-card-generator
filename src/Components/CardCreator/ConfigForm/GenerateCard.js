@@ -1,4 +1,5 @@
 import download from 'downloadjs';
+import '../../../scss/Forms.scss';
 
 import * as htmlToImage from 'html-to-image';
 
@@ -26,7 +27,7 @@ const GenerateCard = (props) => {
 	}
 
 	return <div>
-		<button onClick={ convertCardFronthandler }>{ props.children }</button>
+		<button className='button button-xlg primary' onClick={ convertCardFronthandler }>{ props.children }</button>
 
 	</div>
 }

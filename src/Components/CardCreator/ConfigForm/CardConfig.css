@@ -1,4 +1,67 @@
-.form{
-	display: flex;
-	flex-direction: Column;
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
+.flex .inputField {
+  margin: 4px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.flex .inputField .numeric {
+  width: 50px;
+}
+
+.flex .inputField .label {
+  text-align: left;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.flex .inputField .label-secondary {
+  padding: 0.25em;
+  padding-left: .4em;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.flex .inputField .input {
+  padding: 0.25em;
+}
+
+.flex .inputField .select {
+  padding: 0.25em;
+}
+
+.flex .inputField.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.flex .inputField.vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flex .inputField label {
+  margin-right: 1em;
+  margin: 0.25em 0;
+}
+
+.form-container {
+  padding: 14px;
+}
+/*# sourceMappingURL=CardConfig.css.map */

@@ -1,0 +1,88 @@
+.armourCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 0.3em;
+  padding-top: 0;
+}
+
+.armourCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+}
+
+.armourCard .armour-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.armourCard .armour-label label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.armourCard .armour-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.armourCard .armour-main div {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  padding: 4px;
+}
+
+.armourCard .armour-main .part {
+  font-size: 13px;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  line-height: 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.armourCard .armour-main .value {
+  font-size: 20px;
+  width: 20%;
+  font-weight: bold;
+  color: black;
+}
+
+.armourCard .armour-secondary {
+  background-color: white;
+}
+
+.armourCard .armourCard-inner {
+  border-radius: 5px;
+  padding: 2px 2px 0 2px;
+  background-color: white;
+}
+/*# sourceMappingURL=Armour.css.map */

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './App.css';
+import './App.scss';
 import './scss/Layout.scss';
 import CardCreator from './Components/CardCreator/CardCreator';
 import ConfigForm from './Components/CardCreator/UI/ConfigForm';

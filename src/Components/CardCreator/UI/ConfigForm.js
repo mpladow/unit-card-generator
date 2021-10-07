@@ -1,5 +1,6 @@
 import react from 'react';
 import './ConfigForm.scss';
+import '../../../scss/Forms.scss';
 
 const ConfigForm = (props) => {
 

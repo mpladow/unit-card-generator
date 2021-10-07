@@ -1,0 +1,68 @@
+.sectionSpecialRulesCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 0.3em;
+  padding-top: 0;
+  -webkit-box-shadow: 0px 0px 11px -5px #fff;
+          box-shadow: 0px 0px 11px -5px #fff;
+}
+
+.sectionSpecialRulesCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+}
+
+.sectionSpecialRulesCard .stat-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sectionSpecialRulesCard .stat-label label {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+}
+
+.sectionSpecialRulesCard .stat-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.sectionSpecialRulesCard .stat-main div {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.sectionSpecialRulesCard .stat-secondary {
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.sectionSpecialRulesCard .sectionSpecialRulesCard-inner {
+  border-radius: 5px;
+  padding: 2px 5px;
+  background-color: #ddd;
+  font-size: 14px;
+  text-align: left;
+}
+/*# sourceMappingURL=SectionSpecialRules.css.map */

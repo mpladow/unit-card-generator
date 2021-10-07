@@ -1,0 +1,67 @@
+.weaponryCard {
+  padding: 0.1em;
+  border-radius: 7px;
+  height: 100%;
+  margin-top: 0.2em;
+  padding-top: 0;
+}
+
+.weaponryCard input {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: 100%;
+}
+
+.weaponryCard .weaponry-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weaponryCard .weaponry-label label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.weaponryCard .stat-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  background-color: red;
+}
+
+.weaponryCard .stat-main input {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.weaponryCard .weaponry-value-first {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.weaponryCard .weaponry-value-last {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.weaponryCard .weaponry-value {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  border-left: 1.5px solid #000;
+}
+/*# sourceMappingURL=Weapons.css.map */

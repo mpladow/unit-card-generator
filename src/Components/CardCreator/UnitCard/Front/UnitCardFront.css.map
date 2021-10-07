@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACR,UAAU,EAAE,2BAA2B;CACvC",
+    "sources": [
+        "UnitCardFront.scss"
+    ],
+    "names": [],
+    "file": "UnitCardFront.css"
+}

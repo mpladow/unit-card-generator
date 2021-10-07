@@ -1,9 +1,9 @@
-.container-config{
-    position: absolute;
-    background-color: transparent;
-    bottom: 0;
-    width: 100%;
-    .form{
-        padding: 1em;
-    }
+.container-config {
+	position: fixed;
+	background-color: transparent;
+	bottom: 0;
+	width: 100%;
+	box-shadow: 0 15px 15px #000;
+	display: flex;
+	justify-content: flex-end;
 }

@@ -63,7 +63,7 @@ const ConfigDynamicList = (props) => {
 	let idArtillery = `artillery_${id}`;
 
 
-	return <div>
+	return <div className='weapon-component'>
 		<div className='label'><label>{props.formFieldLabel}</label></div>
 		<div className='row'>
 			<input type='hidden' value={props.weapon.id}></input>
@@ -117,7 +117,7 @@ const ConfigDynamicList = (props) => {
 			</div>
 		</div>
 		<div className='row'>
-			<div className='inputField column'>
+			<div className='inputField column width-50'>
 				<div className='label-secondary'>Notes</div>
 				<div className='input'>
 					<Select
@@ -129,10 +129,11 @@ const ConfigDynamicList = (props) => {
 						value={getDefaultRules()}></Select>
 				</div>
 			</div>
+			{/* <div className='label-secondary'>Notes</div> */}
 			{
 				props.count != 1 && (
-					<div className='flex inputField column'>
-						<button id={currentWeapon.id} onClick={onDeleteWeaponClick}>Delete</button>
+					<div className='flex inputField column' style={{"align-self": "center", "margin-left": "24px", "margin-top": "24px"}}>
+						<button className='button button-sm danger' id={currentWeapon.id} onClick={onDeleteWeaponClick}>Delete</button>
 					</div>
 				)
 			}

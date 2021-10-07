@@ -1,0 +1,120 @@
+.cardTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cardTitle .team-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cardTitle .team-name input {
+  padding: 0;
+  background: none;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+
+.cardTitle .team-name .tankTeamName {
+  line-height: 25px;
+}
+
+.cardTitle .team-name .tankTeamName span {
+  padding: 0;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cardTitle .team-name .tankTeamName span.text-black {
+  color: black;
+  text-shadow: 1px 1px 3px #fff;
+}
+
+.cardTitle .team-name .tankTeamName span.text-white {
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cardTitle .team-name .tankTeamClassification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  line-height: 12px;
+}
+
+.cardTitle .team-name .tankTeamClassification.text-black {
+  color: black;
+}
+
+.cardTitle .team-name .tankTeamClassification.text-white {
+  color: white;
+}
+
+.cardTitle .team-name .tankTeamClassification span {
+  padding: 0;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cardTitle .team-name .tankTeamClassification span.text-black {
+  color: black;
+  text-shadow: 1px 1px 3px #fff;
+}
+
+.cardTitle .team-name .tankTeamClassification span.text-white {
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cardTitle .cardTitleIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardTitle .cardTitleIcon .theme-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin: 3px;
+}
+/*# sourceMappingURL=SectionCardTitle.css.map */
