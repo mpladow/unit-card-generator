@@ -40,11 +40,15 @@
 
 .dark-mode {
 	background-color: #282c34;
-	color: #eaeaea;
+	.card-form, .container-config{
+		color: #eaeaea;
+	}
 }
 .light-mode {
 	background-color: #eaeaea;
-	color: #282c34;
+	.card-form, .container-config{
+		color: #282c34;
+	}
 }
 .width-50 {
 	width: 50%;

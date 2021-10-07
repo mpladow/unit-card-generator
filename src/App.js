@@ -8,14 +8,18 @@ import config from './Config/config.json';
 
 function App() {
 	const [darkMode, setDarkMode] = useState('dark-mode');
+	const [measurement, setMeasurement] = useState('imperial');
 	const darkModeChangeHandler = (value) => {
 		setDarkMode(value);
 	}
+	const mesurementChangeHandler = (value) => {
+		setMeasurement(value);
+	}
 	let classes = `App ${darkMode == true ? 'dark-mode' : 'light-mode'}`;
 	return (
-		<div className={ classes }>
+		<div className={classes}>
 			<CardCreator></CardCreator>
-			<ConfigForm darkModeChange={ darkModeChangeHandler }></ConfigForm>
+			<ConfigForm darkModeChange={darkModeChangeHandler} />
 		</div >
 	);
 }
