@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select';
 import './CardConfig.scss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ConfigDynamicList = (props) => {
 
@@ -133,7 +134,7 @@ const ConfigDynamicList = (props) => {
 			{
 				props.count != 1 && (
 					<div className='flex inputField column' style={{"align-self": "center", "margin-left": "24px", "margin-top": "24px"}}>
-						<button className='button button-sm danger' id={currentWeapon.id} onClick={onDeleteWeaponClick}>Delete</button>
+						<button className='button button-sm danger' id={currentWeapon.id} onClick={onDeleteWeaponClick}> <FontAwesomeIcon icon='times' style={{'margin-right': '4px'}}></FontAwesomeIcon>Delete</button>
 					</div>
 				)
 			}
