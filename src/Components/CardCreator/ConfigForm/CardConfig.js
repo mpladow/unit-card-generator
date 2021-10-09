@@ -4,7 +4,7 @@ import ConfigDynamicList from './ConfigDynamicList';
 import ConfigSelect from './ConfigSelect';
 import Select, { mergeStyles } from 'react-select';
 
-import GenerateCard from './GenerateCard';
+import FormActions from './FormActions';
 import ImageCropper from './ImageCropper';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -97,83 +97,10 @@ const CardConfig = (props) => {
 			]
 		}
 	]
-	const RULES = [
-		{
-			id: 1,
-			name: "Stabilizers",
-			description: "+1 To Hit for Moving ROF.",
-		},
-		{
-			id: 2,
-			name: "Self-defence AA",
-			description: "Weapon can fire at Aircraft with ROF 1.",
-		},
-		{
-			id: 3,
-			name: "No HE",
-			description: "No HE targeting Infantry or Guns adds +1 to the score needed To Hit.",
-		},
-		{
-			id: 4,
-			name: "Smoke",
-			description: "Can Shoot Smoke ammunication.",
-		},
-		{
-			id: 5,
-			name: "Assault 4+",
-			description: "Team hits on 4+ in Assaults",
-		},
-		{
-			id: 6,
-			name: "Heavy Weapon",
-			description: "Team cannot Charge into Contact",
-			displayFront: false
-		},
-		{
-			id: 7,
-			name: "Observer",
-			description: "Unit Leader can Spot for any friendly Artillery Unit.",
-		},
-		{
-			id: 8,
-			name: "Slow Firing",
-			description: "+1 To Hit for Moving ROF.",
-			displayFront: false
-
-		},
-		{
-			id: 9,
-			name: "Bazooka Skirts",
-			description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
-			displayFront: false
-
-		},
-		{
-			id: 10,
-			name: "Forward Firing",
-			description: " Weapons can only hit targets fully in front of the Team.",
-			displayFront: false
-
-		},
-		{
-			id: 11,
-			name: "Gun",
-			description: "Gun teams have a worse Assault rating.",
-			displayFront: false
-		},
-		{
-			id: 12,
-			name: "Protected Ammo",
-			description: "Tanks with Protected Ammo have a better Remount rating.",
-			displayFront: false
-		},
-		{
-			id: 13,
-			name: "Stormtrooper",
-			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
-			displayFront: true
-		},
-	]
+	const RULES = props.rulesList
+	const onLoadAutosaveHandler = () => {
+		props.onLoadAutosaveHandler();
+	}
 	const currentCard = props.currentCard;
 	// GENERATE OPTIONS MENUS
 	const generateRuleMultiselect = () => {
@@ -507,8 +434,8 @@ const CardConfig = (props) => {
 						</div>
 					</div>
 				</div>
-				<div className='flex center' style={ { 'margin-top': '12px' } }>
-					<GenerateCard teamName={ currentCard.teamName }><FontAwesomeIcon icon="download"></FontAwesomeIcon> Download Card</GenerateCard>
+				<div style={ { 'margin-top': '12px' } }>
+					<FormActions onLoadAutosaveHandler={ onLoadAutosaveHandler } teamName={ currentCard.teamName }><FontAwesomeIcon icon="download"></FontAwesomeIcon> Download Card</FormActions>
 				</div>
 			</div>
 		</div>

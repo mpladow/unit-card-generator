@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DataStore from '../Data/DataStore';
 import './CardCreator.scss';
 import CardConfig from './ConfigForm/CardConfig';
@@ -135,6 +135,18 @@ const CardCreator = (props) => {
 			description: "Each time this Unit shoots, one of its Teams my shoot as a Panzerfaust rather than its usual weapons.",
 			displayFront: true
 		},
+		{
+			id: 17,
+			name: "Smoke Bombardment",
+			description: "Once per game can fire a Smoke Bombardment.",
+			displayFront: true
+		},
+		{
+			id: 18,
+			name: "Large Gun",
+			description: 'Cannot be placed from Ambush within 16" of the enemy.',
+			displayFront: true
+		}
 	]
 	const UNIT_TYPE = [
 		{
@@ -161,7 +173,6 @@ const CardCreator = (props) => {
 	const [cardMotivation, setMotivation] = useState({})
 	const [cardSkill, setSkill] = useState({});
 	const [cardHitOn, setHitOn] = useState({});
-	const [cardSecondaryMotivation, setSecondaryMotivation] = useState([]);
 
 	let [cardDetails, setCardDetails] = useState({
 		theme: cardTheme,
@@ -215,7 +226,7 @@ const CardCreator = (props) => {
 
 		save: null,
 		weaponry: [{
-			id: "1",
+			id: 1,
 			name: "75mm turret",
 			range: "12mm",
 			movingRof: "2",
@@ -375,9 +386,9 @@ const CardCreator = (props) => {
 
 			let temp = {
 				...prevState,
-				weapons: [...prevState.weaponry]
+				weaponry: [...prevState.weaponry]
 			}
-			Object.assign(temp.weaponry.find(x => x.id == weaponUpdated.id), weaponUpdated);
+			Object.assign(temp.weaponry.find(x => x.id == parseInt(weaponUpdated.id)), weaponUpdated);
 
 			// temp.weaponry.find(x => x.id == weaponUpdated.id) = weaponUpdated;
 			return temp;
@@ -420,6 +431,38 @@ const CardCreator = (props) => {
 			...cardDetails,
 			unitImage: image
 		})
+
+	}
+
+	useEffect(() => {
+		const AUTOSAVE_INTERVAL = 60000;
+		const debounce = setTimeout(() => {
+			autoSave()
+		}, AUTOSAVE_INTERVAL);
+		return () => clearTimeout(debounce);
+		// autoSave();
+	})
+	const autoSave = () => {
+		console.log('card autosaved');
+		localStorage.setItem("autoSave", JSON.stringify(cardDetails))
+	}
+	// useEffect(() => {
+	// 	getAutoSave();
+	// }, [cardDetails])
+	// const getAutoSave = () => {
+	// 	let autosave = localStorage.getItem("autoSave");
+	// 	if (autosave != null) {
+	// 		let card = JSON.parse(autosave);
+	// 		setCardDetails(card);
+	// 	}
+	// }
+	const loadAutoSave = () => {
+		let autosave = localStorage.getItem("autoSave");
+		if (autosave != null) {
+			let card = JSON.parse(autosave);
+			setCardDetails(card);
+			alert("Autosave Loaded");
+		}
 	}
 
 
@@ -441,6 +484,7 @@ const CardCreator = (props) => {
 			</div>
 			<div className="card-form">
 				<CardConfig
+					rulesList={ RULES }
 					onCardBgColorChange={ updateCardBgColorHandler }
 					onMotivationChange={ updateStatHandler }
 					onSkillChange={ updateStatHandler }
@@ -456,6 +500,7 @@ const CardCreator = (props) => {
 					onTextInputChangeHandler={ textInputChangeHandler }
 					onImageLoadedHandler={ onImageLoadedHandler }
 					onSaveChange={ onSaveChangeHandler }
+					onLoadAutosaveHandler={ loadAutoSave }
 					currentCard={ cardDetails }
 				></CardConfig>
 			</div>

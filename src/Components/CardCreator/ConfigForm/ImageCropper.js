@@ -107,7 +107,7 @@ const ImageCropper = (props) => {
 					onImageLoaded={onImageLoaded}
 					onChange={onCropChange}
 					onComplete={onCropComplete}
-					style={{"max-width": "500px"}} />
+					style={{"maxWidth": "500px"}} />
 
 			)}
 		</div>
