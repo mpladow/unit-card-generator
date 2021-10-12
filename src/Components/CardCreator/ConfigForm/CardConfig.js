@@ -55,9 +55,7 @@ const CardConfig = (props) => {
 		{ id: 3, name: "Trained 4+", value: "Trained 4+" },
 		{ id: 4, name: "Veteran 3+", value: "Veteran 3+" },
 	];
-	const SKILL_SECONDARY = [
-		{ id: 1, name: "Tactics", label: "Tactics" },
-	];
+	const SKILL_SECONDARY = props.skillSecondaryList;
 	const HITON = [
 		{ id: 1, name: "Careful 4+", value: "Careful 4+" },
 		{ id: 2, name: "Aggressive 3+", value: "Aggressive 3+" },
@@ -310,7 +308,7 @@ const CardConfig = (props) => {
 							{ HITON.map((m => <option value={ m.id }>{ m.name }</option>)) }
 						</select>
 					</div>
-					<div className='label-secondary'><label>Secondary</label></div>
+					{/* <div className='label-secondary'><label>Secondary</label></div>
 					<div className='select'>
 						<ConfigSelect
 							id='1'
@@ -329,7 +327,7 @@ const CardConfig = (props) => {
 							onSelectChange={ skillHitOnSecondaryChangeHandler }
 							options={ SKILL_SECONDARY }>
 						</ConfigSelect>
-					</div>
+					</div> */}
 				</div>
 				{ currentCard.unitType.id == 1 && (
 					<div className='flex inputField vertical'>
