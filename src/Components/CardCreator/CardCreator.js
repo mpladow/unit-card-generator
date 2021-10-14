@@ -287,12 +287,6 @@ const CardCreator = (props) => {
 		}
 		],
 		additionalRules: [// rules that appear on the card
-			{
-				id: 1,
-				name: "Gun",
-				description: "This team has a worse assault rating",
-				showInFront: false
-			}
 		]
 	})
 

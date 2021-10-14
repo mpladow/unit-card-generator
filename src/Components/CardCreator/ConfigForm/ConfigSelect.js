@@ -19,15 +19,17 @@ const ConfigSelect = (props) => {
 	return <div>
 		<div className='select'>
 			<input type='hidden' id={statId} value={props.id}></input>
-			<select onChange={ selectChangeHandler } id={ statName } class='motivation-secondary-name'>
+			<select onChange={selectChangeHandler} id={statName} class='motivation-secondary-name'>
 				<option value=''>Empty</option>
-				{ options.map(o => <option value={ o.name }>{ o.name }</option>) }
+				{options.map(o => <option value={o.name}>{o.name}</option>)}
 			</select>
-			<select onChange={ selectChangeHandler } id={ statValue } class='motivation-secondary-value'>
-
+			<select onChange={selectChangeHandler} id={statValue} class='motivation-secondary-value'>
+				<option value='2+'>2+</option>
 				<option value='3+'>3+</option>
 				<option value='4+'>4+</option>
 				<option value='5+'>5+</option>
+				<option value='6'>6</option>
+
 			</select>
 		</div>
 	</div>
