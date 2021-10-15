@@ -12,7 +12,7 @@ const CardCreator = (props) => {
 	// TEMP
 	// DATABASE
 	const [isLoading, setIsLoading] = useState(false);
-	const [RULES, setRules] = useState([])
+	// const [RULES, setRules] = useState([])
 	const THEMES = [
 		{ id: 1, name: 'US', bgTheme: 'theme-us', icon: 'icon-us', bgColor: 'bg-navy-blue', textColor: 'text-white', sectionColorMain: 'bg-navy-blue', cardInner: 'bg-brown-1' },
 		{ id: 2, name: 'German', bgTheme: 'theme-german', icon: 'icon-german', bgColor: 'bg-dark-grey', textColor: 'text-white', sectionColorMain: 'bg-dark-grey', cardInner: 'bg-brown-1' },
@@ -44,152 +44,152 @@ const CardCreator = (props) => {
 		{ id: 2, name: "Aggressive 3+", value: "Aggressive 3+" },
 		{ id: 3, name: "Reckless 2+", value: "Reckless 2+" },
 	];
-	// let RULES = [
-	// 	{
-	// 		id: 1,
-	// 		name: "Stabilizers",
-	// 		description: "+1 To Hit for Moving ROF.",
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		name: "Self-defence AA",
-	// 		description: "Weapon can fire at Aircraft with ROF 1.",
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		name: "No HE",
-	// 		description: "No HE targeting Infantry or Guns adds +1 to the score needed To Hit.",
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		name: "Smoke",
-	// 		description: "Can Shoot Smoke ammunication.",
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		name: "Assault 4+",
-	// 		description: "Team hits on 4+ in Assaults",
-	// 	},
-	// 	{
-	// 		id: 6,
-	// 		name: "Heavy Weapon",
-	// 		description: "Team cannot Charge into Contact",
-	// 		displayFront: false
-	// 	},
-	// 	{
-	// 		id: 7,
-	// 		name: "Observer",
-	// 		description: "Unit Leader can Spot for any friendly Artillery Unit.",
-	// 	},
-	// 	{
-	// 		id: 8,
-	// 		name: "Slow Firing",
-	// 		description: "+1 To Hit for Moving ROF.",
-	// 		displayFront: false
+	let RULES = [
+		{
+			id: 1,
+			name: "Stabilizers",
+			description: "+1 To Hit for Moving ROF.",
+		},
+		{
+			id: 2,
+			name: "Self-defence AA",
+			description: "Weapon can fire at Aircraft with ROF 1.",
+		},
+		{
+			id: 3,
+			name: "No HE",
+			description: "No HE targeting Infantry or Guns adds +1 to the score needed To Hit.",
+		},
+		{
+			id: 4,
+			name: "Smoke",
+			description: "Can Shoot Smoke ammunication.",
+		},
+		{
+			id: 5,
+			name: "Assault 4+",
+			description: "Team hits on 4+ in Assaults",
+		},
+		{
+			id: 6,
+			name: "Heavy Weapon",
+			description: "Team cannot Charge into Contact",
+			displayFront: false
+		},
+		{
+			id: 7,
+			name: "Observer",
+			description: "Unit Leader can Spot for any friendly Artillery Unit.",
+		},
+		{
+			id: 8,
+			name: "Slow Firing",
+			description: "+1 To Hit for Moving ROF.",
+			displayFront: false
 
-	// 	},
-	// 	{
-	// 		id: 9,
-	// 		name: "Bazooka Skirts",
-	// 		description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
-	// 		displayFront: false
+		},
+		{
+			id: 9,
+			name: "Bazooka Skirts",
+			description: "A Tank Team with Bazooka Skirts increases its Side armour to 5 against weapons with Firepower 5+ or 6.",
+			displayFront: false
 
-	// 	},
-	// 	{
-	// 		id: 10,
-	// 		name: "Forward Firing",
-	// 		description: " Weapons can only hit targets fully in front of the Team.",
-	// 		displayFront: false
+		},
+		{
+			id: 10,
+			name: "Forward Firing",
+			description: " Weapons can only hit targets fully in front of the Team.",
+			displayFront: false
 
-	// 	},
-	// 	{
-	// 		id: 11,
-	// 		name: "Gun",
-	// 		description: "Gun teams have a worse Assault rating.",
-	// 		displayFront: false
-	// 	},
-	// 	{
-	// 		id: 12,
-	// 		name: "Protected Ammo",
-	// 		description: "Tanks with Protected Ammo have a better Remount rating.",
-	// 		displayFront: false
-	// 	},
-	// 	{
-	// 		id: 13,
-	// 		name: "Stormtrooper",
-	// 		description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 14,
-	// 		name: "Limited 1",
-	// 		description: "Each time this Unit shoots, one of its Teams may shoot with this weapon.",
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 15,
-	// 		name: "Limited 2",
-	// 		description: "Each time this Unit shoots, two of its Teams may shoot with this weapon.",
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 16,
-	// 		name: "Pinned ROF 1",
-	// 		description: "Each time this Unit shoots, one of its Teams my shoot as a Panzerfaust rather than its usual weapons.",
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 17,
-	// 		name: "Smoke Bombardment",
-	// 		description: "Once per game this unit can fire a Smoke Bombardment.",
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 18,
-	// 		name: "Large Gun",
-	// 		description: 'Cannot be placed from Ambush within 16" of the enemy.',
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 19,
-	// 		name: "Time on Target",
-	// 		description: 'If an artillery Unit with Time on Target ranges in on the first attempt, any Infantry or Gun Teams hit by the Bombardment must re-roll successful Saves.',
-	// 		displayFront: true
-	// 	},
+		},
+		{
+			id: 11,
+			name: "Gun",
+			description: "Gun teams have a worse Assault rating.",
+			displayFront: false
+		},
+		{
+			id: 12,
+			name: "Protected Ammo",
+			description: "Tanks with Protected Ammo have a better Remount rating.",
+			displayFront: false
+		},
+		{
+			id: 13,
+			name: "Stormtrooper",
+			description: "A unit may attempt a second Movement Order after succeeding in its first Movement Order. The second Movement Order must be different from the first.",
+			displayFront: true
+		},
+		{
+			id: 14,
+			name: "Limited 1",
+			description: "Each time this Unit shoots, one of its Teams may shoot with this weapon.",
+			displayFront: true
+		},
+		{
+			id: 15,
+			name: "Limited 2",
+			description: "Each time this Unit shoots, two of its Teams may shoot with this weapon.",
+			displayFront: true
+		},
+		{
+			id: 16,
+			name: "Pinned ROF 1",
+			description: "Each time this Unit shoots, one of its Teams my shoot as a Panzerfaust rather than its usual weapons.",
+			displayFront: true
+		},
+		{
+			id: 17,
+			name: "Smoke Bombardment",
+			description: "Once per game this unit can fire a Smoke Bombardment.",
+			displayFront: true
+		},
+		{
+			id: 18,
+			name: "Large Gun",
+			description: 'Cannot be placed from Ambush within 16" of the enemy.',
+			displayFront: true
+		},
+		{
+			id: 19,
+			name: "Time on Target",
+			description: 'If an artillery Unit with Time on Target ranges in on the first attempt, any Infantry or Gun Teams hit by the Bombardment must re-roll successful Saves.',
+			displayFront: true
+		},
 		
-	// 	{
-	// 		id: 20,
-	// 		name: "Airborne",
-	// 		description: 'This Formation may make an Airborne Assault in missions that use the Airborne Assault rules (page 96 D-Day American page 96)',
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 21,
-	// 		name: "Seek, Strike and Destroy",
-	// 		description: 'This Unit may attempt a Shoot and Scoot Movement Order after succeeding with a Blitz Move Movement Order earlier in the same turn.',
-	// 		displayFront: true
-	// 	},
-	// 	{
-	// 		id: 22,
-	// 		name: "Scout",
-	// 		description: 'Scouts are Gone to Ground unless they Shoot or Assault. This means that if they are Concealed, the enemy will suffer an additional +1 penalty to hit them. Scouts have a worse Last Stand rating. Open or Wheeled Scout tanks have a worse Counterattack and Assault rating',
-	// 		displayFront: true
-	// 	}
-	// 	,
-	// 	{
-	// 		id: 23,
-	// 		name: "Gun Shield",
-	// 		description: `This team is in Bulletproof Cover when shot at from the front of the team's base. A Gun Shield does not offer any protection against Artillery Bombardments or if the team moved at Dash speed.`,
-	// 		displayFront: true
-	// 	}
-	// 	,
-	// 	{
-	// 		id: 24,
-	// 		name: "Tiger Ace",
-	// 		description: `Tiger Aces have a better Last Stand rating and a significantly better Remount rating.`,
-	// 		displayFront: true
-	// 	}
-	// ]
+		{
+			id: 20,
+			name: "Airborne",
+			description: 'This Formation may make an Airborne Assault in missions that use the Airborne Assault rules (page 96 D-Day American page 96)',
+			displayFront: true
+		},
+		{
+			id: 21,
+			name: "Seek, Strike and Destroy",
+			description: 'This Unit may attempt a Shoot and Scoot Movement Order after succeeding with a Blitz Move Movement Order earlier in the same turn.',
+			displayFront: true
+		},
+		{
+			id: 22,
+			name: "Scout",
+			description: 'Scouts are Gone to Ground unless they Shoot or Assault. This means that if they are Concealed, the enemy will suffer an additional +1 penalty to hit them. Scouts have a worse Last Stand rating. Open or Wheeled Scout tanks have a worse Counterattack and Assault rating',
+			displayFront: true
+		}
+		,
+		{
+			id: 23,
+			name: "Gun Shield",
+			description: `This team is in Bulletproof Cover when shot at from the front of the team's base. A Gun Shield does not offer any protection against Artillery Bombardments or if the team moved at Dash speed.`,
+			displayFront: true
+		}
+		,
+		{
+			id: 24,
+			name: "Tiger Ace",
+			description: `Tiger Aces have a better Last Stand rating and a significantly better Remount rating.`,
+			displayFront: true
+		}
+	]
 	const UNIT_TYPE = [
 		{
 			id: 1,
@@ -459,15 +459,15 @@ const CardCreator = (props) => {
 		})
 
 	}
-	useEffect(() => {
-		fetch('https://unitcardgeneratordotnetapi.azurewebsites.net/rules').then(response => {
-			return response.json();
-		}).then(result => {
-			console.log(result);
-			setRules(result);
-		});
-		console.log(RULES);
-	})
+	// useEffect(() => {
+	// 	fetch('https://unitcardgeneratordotnetapi.azurewebsites.net/rules').then(response => {
+	// 		return response.json();
+	// 	}).then(result => {
+	// 		console.log(result);
+	// 		setRules(result);
+	// 	});
+	// 	console.log(RULES);
+	// })
 
 
 	useEffect(() => {
