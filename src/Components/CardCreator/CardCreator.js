@@ -135,7 +135,7 @@ const CardCreator = (props) => {
 		{
 			id: 16,
 			name: "Pinned ROF 1",
-			description: "Each time this Unit shoots, one of its Teams my shoot as a Panzerfaust rather than its usual weapons.",
+			description: "Reduce ROF to 1 when Pinned Down.",
 			displayFront: true
 		},
 		{
@@ -188,7 +188,80 @@ const CardCreator = (props) => {
 			name: "Tiger Ace",
 			description: `Tiger Aces have a better Last Stand rating and a significantly better Remount rating.`,
 			displayFront: true
+		},
+		{
+			id: 25,
+			name: "Bulldog",
+			description: `Troops with Bulldog have a better Counterattack rating.`,
+			displayFront: true
+		},
+		{
+			id: 26,
+			name: "Deadly",
+			description: `Deadly troops ahve a better Assault rating.`,
+			displayFront: true
+		},
+		{
+			id: 27,
+			name: "Infantry Tank",
+			description: `Infantry Tanks have a better Counterattack rating.`,
+			displayFront: true
+		},
+		{
+			id: 28,
+			name: "Night Attack",
+			description: ` If a Force with Night Attack is the attacker in a mission where the defender has Minefields, the player may attack at night. If they do so, Night Fighting rules (see page 113 of the rulebook) are in effect at the start of the game.
+
+British Units from a Formation with Night Attack can move freely from the start of the game. Friendly Units from other Formations or Support may not more out of their Deployment Area untill morning breaks.`,
+			displayFront: true
+		},
+		{
+			id: 29,
+			name: "Overhead Fire",
+			description: `Grenade launchers and light mortars are capable of Overhead Fire can fire over friendly teams.`,
+			displayFront: true
+		},
+		{
+			id: 30,
+			name: "Spearhead",
+			description: `Unit can move before the game to expand the Deployment Area.`,
+			displayFront: true
+		},
+		{
+			id: 31,
+			name: "Overworked",
+			description: `Overworked weapons add +1 to the scort To Hit when moving.`,
+			displayFront: true
 		}
+		,
+		{
+			id: 32,
+			name: "Brutal",
+			description: `Infantry, Gun and Unarmoured Tank Teams re-roll successful Saves.`,
+			displayFront: true
+		}
+		,
+		{
+			id: 33,
+			name: "Transport Attachment",
+			description: `Attachment are additional Teams associated with a Unit.
+Infantry and Gun Units containing Transport Teams as a Tank Attachment (ore vice versa) are split into two Units, an Infantry or Gun Unit and an Transport Unit (each with their Unit Leader). Both parts of the Unit operate independently as seperate Units, supporting each other, altough they deploy as a single Unit`,
+			displayFront: true
+		}
+		,
+		{
+			id: 34,
+			name: "Unit Transport",
+			description: `The Unit Leader of the Transport Attachment must end the Movement Step within 6"/15cm of the Unit Leader of its Passenger Unit while on the table. If it cannot do this, then the Transport Attachment must be Sent to the Rear.`,
+			displayFront: true
+		},
+		{
+			id: 35,
+			name: "Softskin",
+			description: `If transport destroyed, passengers ddestroyed. the rest are sent to the rear and passengers must dismount..`,
+			displayFront: true
+		}
+
 	]
 	const UNIT_TYPE = [
 		{

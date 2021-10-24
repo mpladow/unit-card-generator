@@ -47,7 +47,9 @@ const CardConfig = (props) => {
 		{ id: 1, name: "Remount", value: "Remount" },
 		{ id: 2, name: "Last Stand", value: "Last Stand" },
 		{ id: 3, name: "Remount", value: "Remount" },
-		{ id: 4, name: "Counterattack", value: "Counterattack" }
+		{ id: 4, name: "Counterattack", value: "Counterattack" },
+		{ id: 4, name: "Mounted Assault", value: "Mounted Assault" }
+
 	];
 	const SKILL = [
 		{ id: 1, name: "Conscript 5+", value: "Conscript 5+" },
